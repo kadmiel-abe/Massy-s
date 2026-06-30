@@ -1,0 +1,1104 @@
+﻿<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="fr">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <link rel="icon" type="image/jpeg" href="/assets/images/logod.jpg" />
+    <title>Massy's Relaxation</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&amp;family=Montserrat:wght@300;400;500;600&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-error": "#ffffff",
+                        "on-tertiary-fixed-variant": "#004d67",
+                        "error-container": "#ffdad6",
+                        "secondary": "#5f5e5e",
+                        "surface-container-low": "#f5f3ee",
+                        "on-secondary": "#ffffff",
+                        "surface-container": "#f0eee9",
+                        "surface-bright": "#fbf9f4",
+                        "secondary-fixed": "#e5e2e1",
+                        "on-background": "#1b1c19",
+                        "background": "#fbf9f4",
+                        "on-secondary-fixed-variant": "#474646",
+                        "inverse-on-surface": "#f2f1ec",
+                        "on-secondary-fixed": "#1c1b1b",
+                        "on-tertiary": "#ffffff",
+                        "inverse-surface": "#30312e",
+                        "outline": "#7f7663",
+                        "on-primary": "#ffffff",
+                        "outline-variant": "#d0c5af",
+                        "on-primary-fixed-variant": "#574500",
+                        "on-tertiary-container": "#004b64",
+                        "on-tertiary-fixed": "#001e2b",
+                        "tertiary-fixed": "#c1e8ff",
+                        "tertiary": "#006687",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-high": "#eae8e3",
+                        "surface-container-highest": "#e4e2dd",
+                        "tertiary-container": "#6cbce3",
+                        "surface": "#fbf9f4",
+                        "on-secondary-container": "#656464",
+                        "on-surface-variant": "#4d4635",
+                        "tertiary-fixed-dim": "#81d0f8",
+                        "surface-variant": "#e4e2dd",
+                        "primary-fixed": "#ffe088",
+                        "surface-tint": "#735c00",
+                        "secondary-container": "#e5e2e1",
+                        "secondary-fixed-dim": "#c9c6c5",
+                        "primary-fixed-dim": "#e9c349",
+                        "on-primary-container": "#554300",
+                        "on-error-container": "#93000a",
+                        "primary-container": "#d4af37",
+                        "on-surface": "#1b1c19",
+                        "surface-dim": "#dbdad5",
+                        "on-primary-fixed": "#241a00",
+                        "error": "#ba1a1a",
+                        "primary": "#735c00",
+                        "inverse-primary": "#e9c349"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-max": "1280px",
+                        "stack-md": "2rem",
+                        "section-padding": "10rem",
+                        "stack-sm": "1rem",
+                        "stack-lg": "4rem",
+                        "gutter": "2rem"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["Montserrat"],
+                        "headline-md": ["Playfair Display"],
+                        "body-md": ["Montserrat"],
+                        "body-lg": ["Montserrat"],
+                        "headline-xl": ["Playfair Display"],
+                        "headline-lg-mobile": ["Playfair Display"],
+                        "headline-lg": ["Playfair Display"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600" }],
+                        "headline-md": ["32px", { "lineHeight": "40px", "fontWeight": "500" }],
+                        "body-md": ["16px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "32px", "fontWeight": "400" }],
+                        "headline-xl": ["64px", { "lineHeight": "72px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg-mobile": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                        "headline-lg": ["48px", { "lineHeight": "56px", "fontWeight": "600" }]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .luxury-shadow {
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
+        }
+
+        .glass-header {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px) scale(0.98);
+            transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1), transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+            will-change: opacity, transform;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        .reveal-left {
+            transform: translateX(-35px) scale(0.98);
+        }
+
+        .reveal-left.active {
+            transform: translateX(0) scale(1);
+        }
+
+        .reveal-right {
+            transform: translateX(35px) scale(0.98);
+        }
+
+        .reveal-right.active {
+            transform: translateX(0) scale(1);
+        }
+
+        .reveal-scale {
+            transform: translateY(24px) scale(0.94);
+        }
+
+        .reveal-scale.active {
+            transform: translateY(0) scale(1);
+        }
+
+        .reveal-btn {
+            opacity: 0;
+            transform: translateY(20px) scale(0.97);
+            transition: opacity 0.75s ease, transform 0.75s ease;
+            will-change: opacity, transform;
+        }
+
+        .reveal-btn.active {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -0.35rem;
+            width: 0;
+            height: 3px;
+            background: #735c00;
+            transition: width 0.3s ease, background 0.3s ease;
+        }
+
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .nav-link.active {
+            color: #735c00 !important;
+            font-weight: 700;
+        }
+
+        .nav-link.active::after {
+            background: #735c00;
+        }
+
+        #hero,
+        #services,
+        #about,
+        #galerie,
+        #contact {
+            scroll-margin-top: 7.5rem;
+        }
+
+        @keyframes slow-zoom {
+            0% {
+                transform: scale(1);
+            }
+
+            100% {
+                transform: scale(1.1);
+            }
+        }
+
+        .animate-slow-zoom {
+            animation: slow-zoom 20s ease-in-out infinite alternate;
+        }
+
+        @keyframes pulse-soft {
+
+            0%,
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4);
+            }
+
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+            }
+        }
+
+        .animate-pulse-soft {
+            animation: pulse-soft 2s infinite;
+        }
+
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.15);
+            border-color: #d4af37;
+        }
+
+        /* Custom scrollbar for premium feel */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #fbf9f4;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #d4af37;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background text-on-background font-body-md selection:bg-primary-fixed selection:text-on-primary-fixed overflow-x-hidden">
+    <!-- TopNavBar -->
+    <header
+        class="fixed top-0 w-full z-50 glass-header bg-surface/80 border-b border-outline-variant/20 transition-all duration-500 py-4 h-auto">
+        <div class="flex justify-between items-center px-8 md:px-gutter max-w-container-max mx-auto">
+            <!-- Brand Logo -->
+            <a class="flex items-center gap-3 group" href="#hero">
+                <img alt="Massy's Relaxation &amp; Spa Logo"
+                    class="h-10 w-10 object-contain transition-transform duration-500 group-hover:rotate-12"
+                    src="/assets/images/logod.jpg" />
+                <span class="font-headline-md text-2xl font-semibold text-primary tracking-tight">Massy's Spa</span>
+            </a>
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex items-center gap-10">
+                <a class="font-label-caps text-label-caps text-primary relative nav-link after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all"
+                    href="#hero">Accueil</a>
+                <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-all duration-300 relative nav-link after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all"
+                    href="#services">Services</a>
+                <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-all duration-300 relative nav-link after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all"
+                    href="#about">À propos</a>
+                <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-all duration-300 relative nav-link after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all"
+                    href="#galerie">Galerie</a>
+                <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-all duration-300 relative nav-link after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all"
+                    href="#contact">Contact</a>
+            </nav>
+            <!-- Actions -->
+            <div class="flex items-center gap-4">
+                <button id="mobile-menu-button" type="button"
+                    class="md:hidden inline-flex items-center justify-center w-11 h-11 rounded-full border border-outline-variant/30 text-on-surface-variant hover:bg-surface/80 transition-all">
+                    <span class="material-symbols-outlined text-2xl">menu</span>
+                </button>
+                <a class="hidden xl:flex items-center gap-2 font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors"
+                    href="tel:+22500000000">
+                    <span class="material-symbols-outlined text-sm">call</span>
+                    +225 0507719668
+
+                </a>
+                <a class="hidden md:inline-flex bg-primary text-on-primary px-8 py-3.5 rounded-full font-label-caps text-label-caps transition-all hover:scale-105 hover:bg-surface-tint active:scale-95 shadow-md"
+                    href="#booking">
+                    Réserver
+                </a>
+            </div>
+        </div>
+        <div id="mobile-menu"
+            class="absolute inset-x-0 top-full z-40 hidden bg-surface/95 backdrop-blur-xl border-b border-outline-variant/20 shadow-xl">
+            <div class="px-6 pb-8 pt-8">
+                <button id="mobile-menu-close" type="button"
+                    class="mb-6 inline-flex items-center justify-center rounded-full border border-outline-variant/30 w-11 h-11 text-on-surface-variant hover:bg-surface/80 transition-all">
+                    <span class="material-symbols-outlined text-2xl">close</span>
+                </button>
+                <nav class="flex flex-col gap-4">
+                    <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-all nav-link"
+                        href="#hero">Accueil</a>
+                    <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-all nav-link"
+                        href="#services">Services</a>
+                    <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-all nav-link"
+                        href="#about">À propos</a>
+                    <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-all nav-link"
+                        href="#galerie">Galerie</a>
+                    <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-all nav-link"
+                        href="#contact">Contact</a>
+                </nav>
+                <div class="mt-8 flex flex-col gap-4">
+                    <a class="inline-flex items-center gap-2 px-4 py-4 rounded-2xl bg-primary text-on-primary font-label-caps text-label-caps justify-center"
+                        href="#booking">
+                        <span class="material-symbols-outlined">calendar_month</span> Réserver
+                    </a>
+                    <a class="inline-flex items-center gap-2 px-4 py-4 rounded-2xl border border-outline-variant/30 text-on-surface-variant justify-center hover:text-primary transition-all"
+                        href="tel:+22500000000">
+                        <span class="material-symbols-outlined">call</span> +225 XX XX XX XX
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Hero Section -->
+    <section id="hero"
+        class="relative min-h-[70vh] h-[85vh] md:h-screen md:min-h-[700px] flex items-center justify-center overflow-hidden py-24">
+        <div class="absolute inset-0 bg-black/40 z-10"></div>
+        <div class="absolute inset-0 w-full h-full">
+            <div class="w-full h-full bg-cover bg-center animate-slow-zoom"
+                style="background-image: url('/assets/images/ChatGPT\ Image\ Jun\ 30\,\ 2026\,\ 09_26_27\ PM.png');">
+            </div>
+        </div>
+        <div class="relative z-20 container mx-auto px-gutter text-center text-on-primary max-w-5xl">
+            <span class="font-label-caps text-label-caps tracking-[0.4em] text-primary-fixed mb-8 block reveal">L'ART DU
+                BIEN-ÊTRE ABSOLU</span>
+            <h1 class="font-headline-xl text-headline-lg-mobile md:text-headline-xl mb-10 leading-[1.1] reveal"
+                style="transition-delay: 200ms;">
+                Une parenthèse de détente exclusive au cœur d'Abidjan
+            </h1>
+            <p class="font-body-lg text-body-lg mb-14 max-w-2xl mx-auto opacity-90 reveal"
+                style="transition-delay: 400ms;">
+                Découvrez nos rituels ancestraux et soins premium conçus pour sublimer votre sérénité dans un cadre
+                d'exception.
+            </p>
+            <div class="flex flex-col md:flex-row gap-6 justify-center items-center reveal"
+                style="transition-delay: 600ms;">
+                <a class="w-full md:w-auto px-12 py-5 bg-primary text-on-primary rounded-full font-label-caps text-label-caps font-bold transition-all hover:bg-inverse-primary hover:text-on-primary-container shadow-xl active:scale-95 reveal-btn"
+                    href="#booking">
+                    JE RÉSERVE MAINTENANT
+                </a>
+                <a class="w-full md:w-auto px-12 py-5 border border-white/30 backdrop-blur-md text-white rounded-full font-label-caps text-label-caps font-bold transition-all hover:bg-white hover:text-black active:scale-95 reveal-btn"
+                    href="#services">
+                    DÉCOUVRIR LES SOINS
+                </a>
+            </div>
+        </div>
+        <!-- Scroll Indicator -->
+        <div
+            class="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 animate-bounce opacity-50">
+            <span class="font-label-caps text-[10px] tracking-widest text-white">SCROLL</span>
+            <span class="material-symbols-outlined text-white">expand_more</span>
+        </div>
+    </section>
+    <!-- Services Section -->
+    <section class="py-section-padding bg-surface" id="services">
+        <div class="max-w-container-max mx-auto px-gutter">
+            <div class="text-center mb-24 reveal">
+                <h2 class="font-headline-lg text-headline-lg mb-6 text-on-surface">Nos Soins Signature</h2>
+                <div class="w-20 h-1 bg-primary mx-auto mb-8"></div>
+                <p class="max-w-2xl mx-auto text-on-surface-variant font-body-md text-lg">Une sélection exclusive de
+                    traitements pour revitaliser votre corps et apaiser votre esprit.</p>
+            </div>
+            <!-- Expanded Grid for 12 Services -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Duo Sensuel (Featured Large Card) -->
+                <div
+                    class="lg:col-span-2 reveal card-hover relative rounded-2xl overflow-hidden bg-inverse-surface text-white flex flex-col md:flex-row border border-outline-variant/10">
+                    <div class="w-full md:w-1/2 h-80 md:h-full relative overflow-hidden">
+                        <img alt="Duo Sensuel Premium"
+                            class="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
+                            src="/assets/images/duo-sensuel.png" />
+                        <span
+                            class="absolute top-6 left-6 bg-primary text-on-primary font-label-caps text-[10px] px-4 py-1.5 rounded-full z-20">COUP
+                            DE CŒUR</span>
+                    </div>
+                    <div class="w-full md:w-1/2 p-10 flex flex-col justify-center border-l border-white/5">
+                        <h3 class="font-headline-md text-3xl mb-4 text-primary">Duo Sensuel Premium</h3>
+                        <p class="font-label-caps text-label-caps text-surface-variant mb-6">20mn Jacuzzi + Gommage +
+                            Soin Visage + Massage</p>
+                        <p class="font-body-md text-surface-variant/70 mb-10 leading-relaxed text-sm">Une expérience
+                            immersive à deux incluant une séance de jacuzzi relaxante, un gommage purifiant et un
+                            massage aux pierres chaudes.</p>
+                        <div class="flex items-center justify-between mt-auto">
+                            <span class="font-headline-md text-2xl text-primary-fixed">190.000 FCFA</span>
+                            <button
+                                class="bg-primary text-on-primary w-12 h-12 rounded-full flex items-center justify-center transition-all hover:scale-110 active:scale-95"><span
+                                    class="material-symbols-outlined">add</span></button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Package Gold -->
+                <div class="reveal card-hover rounded-2xl overflow-hidden bg-primary-container text-on-primary-container border border-primary/20 flex flex-col"
+                    style="transition-delay: 100ms;">
+                    <div class="h-64 overflow-hidden relative">
+                        <img alt="Package Gold"
+                            class="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                            src="/assets/images/package-gold.png" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-primary-container/80 to-transparent"></div>
+                    </div>
+                    <div class="p-8 flex-grow flex flex-col">
+                        <span
+                            class="font-label-caps text-label-caps bg-on-primary-container/10 px-3 py-1 rounded mb-3 inline-block w-fit">FORFAIT
+                            ÉLITE</span>
+                        <h3 class="font-headline-md text-2xl mb-4">Package Gold</h3>
+                        <p class="text-sm opacity-80 mb-6">Gommage + Visage + Pierres Chaudes + Sensuel</p>
+                        <div
+                            class="flex items-center justify-between pt-4 border-t border-on-primary-container/20 mt-auto">
+                            <span class="font-headline-md text-xl">100.000 FCFA</span>
+                            <span class="material-symbols-outlined">stars</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Massage à 4 mains (New) -->
+                <div class="reveal card-hover rounded-2xl overflow-hidden bg-surface-container-lowest border border-outline-variant/30 flex flex-col"
+                    style="transition-delay: 150ms;">
+                    <div class="h-64 overflow-hidden">
+                        <img alt="Massage à 4 mains"
+                            class="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                            src="/assets/images/massage-4-mains.png" />
+                    </div>
+                    <div class="p-8 flex-grow flex flex-col">
+                        <span class="font-label-caps text-label-caps text-primary mb-3 block">EXPÉRIENCE
+                            SENSORIELLE</span>
+                        <h3 class="font-headline-md text-2xl mb-6">Massage à 4 mains</h3>
+                        <div class="flex items-center justify-between pt-4 border-t border-outline-variant/20 mt-auto">
+                            <span class="font-headline-md text-xl text-primary">50.000 FCFA</span>
+                            <span class="text-on-surface-variant font-label-caps opacity-60">1 HEURE</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Massage Relaxation -->
+                <div class="reveal card-hover rounded-2xl overflow-hidden bg-surface-container-lowest border border-outline-variant/30 flex flex-col"
+                    style="transition-delay: 200ms;">
+                    <div class="h-64 overflow-hidden">
+                        <img alt="Massage Relaxation"
+                            class="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                            src="/assets/images/massage-relaxation.png" />
+                    </div>
+                    <div class="p-8 flex-grow flex flex-col">
+                        <span class="font-label-caps text-label-caps text-primary mb-3 block">BIEN-ÊTRE CLASSIQUE</span>
+                        <h3 class="font-headline-md text-2xl mb-6">Massage Relaxation</h3>
+                        <div class="flex items-center justify-between pt-4 border-t border-outline-variant/20 mt-auto">
+                            <span class="font-headline-md text-xl text-primary">35.000 FCFA</span>
+                            <span class="text-on-surface-variant font-label-caps opacity-60">1 HEURE</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Massage Sensuel -->
+                <div class="reveal card-hover rounded-2xl overflow-hidden bg-surface-container-lowest border border-outline-variant/30 flex flex-col"
+                    style="transition-delay: 250ms;">
+                    <div class="h-64 overflow-hidden">
+                        <img alt="Massage Sensuel"
+                            class="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                            src="/assets/images/massage-sensuel.png" />
+                    </div>
+                    <div class="p-8 flex-grow flex flex-col">
+                        <span class="font-label-caps text-label-caps text-primary mb-3 block">DÉTENTE PROFONDE</span>
+                        <h3 class="font-headline-md text-2xl mb-6">Massage Sensuel</h3>
+                        <div class="flex items-center justify-between pt-4 border-t border-outline-variant/20 mt-auto">
+                            <span class="font-headline-md text-xl text-primary">80.000 FCFA</span>
+                            <span class="text-on-surface-variant font-label-caps opacity-60">LUXE</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Massage aux pierres chaudes (New) -->
+                <div class="reveal card-hover rounded-2xl overflow-hidden bg-surface-container-lowest border border-outline-variant/30 flex flex-col"
+                    style="transition-delay: 300ms;">
+                    <div class="h-64 overflow-hidden">
+                        <img alt="Massage aux pierres chaudes"
+                            class="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                            src="/assets/images/massage-pierres-chaudes.png" />
+                    </div>
+                    <div class="p-8 flex-grow flex flex-col">
+                        <span class="font-label-caps text-label-caps text-primary mb-3 block">THERMOTHERAPIE</span>
+                        <h3 class="font-headline-md text-2xl mb-6">Massage Pierres Chaudes</h3>
+                        <div class="flex items-center justify-between pt-4 border-t border-outline-variant/20 mt-auto">
+                            <span class="font-headline-md text-xl text-primary">45.000 FCFA</span>
+                            <span class="text-on-surface-variant font-label-caps opacity-60">RITUEL</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Massage Tonic anti-douleur (New) -->
+                <div class="reveal card-hover rounded-2xl overflow-hidden bg-surface-container-lowest border border-outline-variant/30 flex flex-col"
+                    style="transition-delay: 350ms;">
+                    <div class="h-64 overflow-hidden">
+                        <img alt="Massage Tonic"
+                            class="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                            src="/assets/images/massage-tonic.png" />
+                    </div>
+                    <div class="p-8 flex-grow flex flex-col">
+                        <span class="font-label-caps text-label-caps text-primary mb-3 block">RÉCUPÉRATION</span>
+                        <h3 class="font-headline-md text-2xl mb-6">Massage Tonic Anti-douleur</h3>
+                        <div class="flex items-center justify-between pt-4 border-t border-outline-variant/20 mt-auto">
+                            <span class="font-headline-md text-xl text-primary">40.000 FCFA</span>
+                            <span class="text-on-surface-variant font-label-caps opacity-60">HUILLES ESSENTIELLES</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Massage Africain (New) -->
+                <div class="reveal card-hover rounded-2xl overflow-hidden bg-surface-container-lowest border border-outline-variant/30 flex flex-col"
+                    style="transition-delay: 400ms;">
+                    <div class="h-64 overflow-hidden">
+                        <img alt="Massage Africain"
+                            class="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                            src="/assets/images/massage-africain.png" />
+                    </div>
+                    <div class="p-8 flex-grow flex flex-col">
+                        <span class="font-label-caps text-label-caps text-primary mb-3 block">TRADITION</span>
+                        <h3 class="font-headline-md text-2xl mb-6">Massage Africain</h3>
+                        <div class="flex items-center justify-between pt-4 border-t border-outline-variant/20 mt-auto">
+                            <span class="font-headline-md text-xl text-primary">40.000 FCFA</span>
+                            <span class="text-on-surface-variant font-label-caps opacity-60">ANCESTRAL</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Soin Visage -->
+                <div class="reveal card-hover rounded-2xl overflow-hidden bg-surface-container-lowest border border-outline-variant/30 flex flex-col"
+                    style="transition-delay: 450ms;">
+                    <div class="h-64 overflow-hidden">
+                        <img alt="Soin Visage"
+                            class="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                            src="/assets/images/soin-visage.png" />
+                    </div>
+                    <div class="p-8 flex-grow flex flex-col">
+                        <span class="font-label-caps text-label-caps text-primary mb-3 block">BEAUTÉ &amp; ÉCLAT</span>
+                        <h3 class="font-headline-md text-2xl mb-6">Soin du Visage Gamme</h3>
+                        <div class="flex items-center justify-between pt-4 border-t border-outline-variant/20 mt-auto">
+                            <span class="font-headline-md text-xl text-primary">Dès 15.000 FCFA</span>
+                            <span class="text-on-surface-variant font-label-caps opacity-60">PREMIUM</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Gommage -->
+                <div class="reveal card-hover rounded-2xl overflow-hidden bg-surface-container-lowest border border-outline-variant/30 flex flex-col"
+                    style="transition-delay: 500ms;">
+                    <div class="h-64 overflow-hidden">
+                        <img alt="Gommage Clarifiant"
+                            class="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                            src="/assets/images/gommage-clarifiant.png" />
+                    </div>
+                    <div class="p-8 flex-grow flex flex-col">
+                        <span class="font-label-caps text-label-caps text-primary mb-3 block">RITUEL CORPOREL</span>
+                        <h3 class="font-headline-md text-2xl mb-6">Gommage Clarifiant</h3>
+                        <div class="flex items-center justify-between pt-4 border-t border-outline-variant/20 mt-auto">
+                            <span class="font-headline-md text-xl text-primary">45.000 FCFA</span>
+                            <span class="text-on-surface-variant font-label-caps opacity-60">PURIFIANT</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Pédicure & Manucure (New) -->
+                <div class="reveal card-hover rounded-2xl overflow-hidden bg-surface-container-lowest border border-outline-variant/30 flex flex-col"
+                    style="transition-delay: 550ms;">
+                    <div class="h-64 overflow-hidden">
+                        <img alt="Pédicure Manucure"
+                            class="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                            src="/assets/images/pedicure-manucure.png" />
+                    </div>
+                    <div class="p-8 flex-grow flex flex-col">
+                        <span class="font-label-caps text-label-caps text-primary mb-3 block">ONGLES &amp; SOINS</span>
+                        <h3 class="font-headline-md text-2xl mb-6">Pédicure &amp; Manucure</h3>
+                        <div class="flex items-center justify-between pt-4 border-t border-outline-variant/20 mt-auto">
+                            <span class="font-headline-md text-xl text-primary">15.000 FCFA</span>
+                            <span class="text-on-surface-variant font-label-caps opacity-60">COMBO</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Epilation à la cire maillot (New) -->
+                <div class="reveal card-hover rounded-2xl overflow-hidden bg-surface-container-lowest border border-outline-variant/30 flex flex-col"
+                    style="transition-delay: 600ms;">
+                    <div class="h-64 overflow-hidden">
+                        <img alt="Epilation"
+                            class="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                            src="/assets/images/epilation-cire-maillot.png" />
+                    </div>
+                    <div class="p-8 flex-grow flex flex-col">
+                        <span class="font-label-caps text-label-caps text-primary mb-3 block">DÉLICATESSE</span>
+                        <h3 class="font-headline-md text-2xl mb-6">Epilation Cire Maillot</h3>
+                        <div class="flex items-center justify-between pt-4 border-t border-outline-variant/20 mt-auto">
+                            <span class="font-headline-md text-xl text-primary">20.000 FCFA</span>
+                            <span class="text-on-surface-variant font-label-caps opacity-60">SOIN CORPS</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Why Choose Us -->
+    <section class="py-section-padding bg-surface-container-low overflow-hidden relative" id="about">
+        <div class="max-w-container-max mx-auto px-gutter relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+                <div class="reveal reveal-left">
+                    <span class="font-label-caps text-primary tracking-[0.3em] block mb-6">L'EXCELLENCE MASSY'S</span>
+                    <h2 class="font-headline-lg text-headline-lg mb-10 leading-tight">Un sanctuaire de paix au cœur de
+                        la métropole</h2>
+                    <p class="text-body-lg text-on-surface-variant mb-14 leading-relaxed">
+                        Depuis notre création, nous nous engageons à offrir une expérience de bien-être sans compromis.
+                        Notre spa est un refuge minimaliste où le temps s'efface au profit de votre ressourcement total.
+                    </p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-10">
+                        <div class="flex gap-5 group reveal">
+                            <div
+                                class="flex-shrink-0 w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary transition-colors group-hover:bg-primary group-hover:text-white">
+                                <span class="material-symbols-outlined">person_celebrate</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-2">Thérapeutes Experts</h4>
+                                <p class="text-sm text-on-surface-variant leading-relaxed">Formés aux techniques
+                                    internationales et rituels ancestraux.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-5 group reveal" style="transition-delay: 100ms;">
+                            <div
+                                class="flex-shrink-0 w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary transition-colors group-hover:bg-primary group-hover:text-white">
+                                <span class="material-symbols-outlined">clean_hands</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-2">Produits de Luxe</h4>
+                                <p class="text-sm text-on-surface-variant leading-relaxed">Sélection rigoureuse d'huiles
+                                    et cosmétiques naturels rares.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-5 group reveal" style="transition-delay: 200ms;">
+                            <div
+                                class="flex-shrink-0 w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary transition-colors group-hover:bg-primary group-hover:text-white">
+                                <span class="material-symbols-outlined">spa</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-2">Cadre Prestigieux</h4>
+                                <p class="text-sm text-on-surface-variant leading-relaxed">Design minimaliste favorisant
+                                    la détente sensorielle immédiate.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-5 group reveal" style="transition-delay: 300ms;">
+                            <div
+                                class="flex-shrink-0 w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary transition-colors group-hover:bg-primary group-hover:text-white">
+                                <span class="material-symbols-outlined">schedule</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-2">Service Sur-mesure</h4>
+                                <p class="text-sm text-on-surface-variant leading-relaxed">Des soins personnalisés selon
+                                    vos besoins spécifiques du jour.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative reveal reveal-right" style="transition-delay: 300ms;">
+                    <div class="rounded-3xl overflow-hidden aspect-[4/5] luxury-shadow">
+                        <img alt="Expert Therapist" class="w-full h-full object-cover"
+                            src="/assets/images/530354938_122134394534886030_5335462976026652677_n.jpg" />
+                    </div>
+                    <div
+                        class="absolute -bottom-10 -left-10 bg-surface p-10 rounded-2xl shadow-2xl border border-outline-variant/20 hidden md:block transition-transform hover:scale-105 duration-500">
+                        <span class="block font-headline-md text-4xl text-primary mb-2">10+ Années</span>
+                        <span class="font-label-caps text-xs tracking-widest opacity-60">D'EXPÉRIENCE DANS LE
+                            LUXE</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Galerie Masonry -->
+    <section class="py-section-padding bg-surface" id="galerie">
+        <div class="max-w-container-max mx-auto px-gutter">
+            <div class="text-center mb-24 reveal">
+                <h2 class="font-headline-lg text-headline-lg mb-6">Galerie Immersive</h2>
+                <p class="font-label-caps text-primary tracking-widest">DÉCOUVREZ NOTRE UNIVERS EN IMAGES</p>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:h-[900px]">
+                <div class="col-span-2 row-span-2 rounded-3xl overflow-hidden luxury-shadow group reveal">
+                    <img alt="Spa Suite"
+                        class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                        src="/assets/images/529824810_122134394696886030_6526657566712897371_n.jpg" />
+                </div>
+                <div class="rounded-3xl overflow-hidden luxury-shadow group reveal" style="transition-delay: 150ms;">
+                    <img alt="Stones &amp; Zen"
+                        class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                        src="/assets/images/581099577_122160617564886030_881963905481964647_n.jpg" />
+                </div>
+                <div class="rounded-3xl overflow-hidden luxury-shadow group reveal" style="transition-delay: 300ms;">
+                    <img alt="Aromatic Oils"
+                        class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                        src="/assets/images/583335810_122161924640886030_8135816736497997637_n.jpg" />
+                </div>
+                <div class="col-span-2 rounded-3xl overflow-hidden luxury-shadow group reveal"
+                    style="transition-delay: 450ms;">
+                    <img alt="Massage Room"
+                        class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                        src="/assets/images/589571570_122164482638886030_2331258946285810833_n.jpg" />
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Testimonials -->
+    <section class="py-section-padding bg-inverse-surface text-surface overflow-hidden relative" id="temoignages">
+        <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[120px] -mr-64 -mt-64">
+        </div>
+        <div class="max-w-container-max mx-auto px-gutter relative z-10">
+            <div class="text-center mb-24 reveal">
+                <h2 class="font-headline-lg text-headline-lg mb-6 text-primary-fixed">Paroles de Sérénité</h2>
+                <p class="font-body-md text-lg opacity-60">Ce que nos hôtes disent de leur expérience chez Massy's.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <div
+                    class="p-12 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-md reveal hover:bg-white/[0.08] transition-all duration-500">
+                    <div class="flex gap-1 text-primary-fixed mb-8">
+                        <span class="material-symbols-outlined fill-1"
+                            style="font-variation-settings: 'FILL' 1;">star</span>
+                        <span class="material-symbols-outlined fill-1"
+                            style="font-variation-settings: 'FILL' 1;">star</span>
+                        <span class="material-symbols-outlined fill-1"
+                            style="font-variation-settings: 'FILL' 1;">star</span>
+                        <span class="material-symbols-outlined fill-1"
+                            style="font-variation-settings: 'FILL' 1;">star</span>
+                        <span class="material-symbols-outlined fill-1"
+                            style="font-variation-settings: 'FILL' 1;">star</span>
+                    </div>
+                    <p class="font-body-md text-lg italic mb-12 opacity-80 leading-relaxed">" Une très belle expérience
+                        ✨
+                        Le spa est magnifique, propre et apaisant. Le service était impeccable du début à la fin et le
+                        personnel très accueillant. Un vrai moment de détente et de bien-être."
+                    </p>
+                    <div class="flex items-center gap-5">
+                        <div
+                            class="w-14 h-14 rounded-full bg-primary/20 flex items-center justify-center font-bold text-primary-fixed">
+                            SM</div>
+                        <div>
+                            <p class="font-bold text-lg">
+                                grace josiane adjiri.</p>
+                            <p class="text-xs tracking-widest opacity-40 uppercase">Cliente Fidèle</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-12 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-md reveal hover:bg-white/[0.08] transition-all duration-500"
+                    style="transition-delay: 200ms;">
+                    <div class="flex gap-1 text-primary-fixed mb-8">
+                        <span class="material-symbols-outlined fill-1"
+                            style="font-variation-settings: 'FILL' 1;">star</span>
+                        <span class="material-symbols-outlined fill-1"
+                            style="font-variation-settings: 'FILL' 1;">star</span>
+                        <span class="material-symbols-outlined fill-1"
+                            style="font-variation-settings: 'FILL' 1;">star</span>
+                        <span class="material-symbols-outlined fill-1"
+                            style="font-variation-settings: 'FILL' 1;">star</span>
+                        <span class="material-symbols-outlined fill-1"
+                            style="font-variation-settings: 'FILL' 1;">star</span>
+                    </div>
+                    <p class="font-body-md text-lg italic mb-12 opacity-80 leading-relaxed">"Je vous recommande service
+                        de qualité incroyable ❤️🤝🙌🏾👌👌👌 très beau cadre les hôtesses sont super sympa et agréable
+                        gentille et douce et surtout savent super bien masser que sa soit soins de visage , massage ,
+                        épilation je vous recommande vivement accueille et cadre super bien parfumer et bien 🤩"</p>
+                    <div class="flex items-center gap-5">
+                        <div
+                            class="w-14 h-14 rounded-full bg-primary/20 flex items-center justify-center font-bold text-primary-fixed">
+                            SK</div>
+                        <div>
+                            <p class="font-bold text-lg">sylvanus KADJO</p>
+                            <p class="text-xs tracking-widest opacity-40 uppercase">Chef d'Entreprise</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-12 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-md reveal hover:bg-white/[0.08] transition-all duration-500"
+                    style="transition-delay: 400ms;">
+                    <div class="flex gap-1 text-primary-fixed mb-8">
+                        <span class="material-symbols-outlined fill-1"
+                            style="font-variation-settings: 'FILL' 1;">star</span>
+                        <span class="material-symbols-outlined fill-1"
+                            style="font-variation-settings: 'FILL' 1;">star</span>
+                        <span class="material-symbols-outlined fill-1"
+                            style="font-variation-settings: 'FILL' 1;">star</span>
+                        <span class="material-symbols-outlined fill-1"
+                            style="font-variation-settings: 'FILL' 1;">star</span>
+                        <span class="material-symbols-outlined fill-1"
+                            style="font-variation-settings: 'FILL' 1;">star</span>
+                    </div>
+                    <p class="font-body-md text-lg italic mb-12 opacity-80 leading-relaxed">"Le meilleur endroit de Spa que j’ai connu pouhaaa , l’accueil , la propreté et même le massage tout est bien fait.
+
+Vraiment merci Massy Massage vous m’avez fait du bien 🙏🏾🙏🏾🙏🏾"</p>
+                    <div class="flex items-center gap-5">
+                        <div
+                            class="w-14 h-14 rounded-full bg-primary/20 flex items-center justify-center font-bold text-primary-fixed">
+                            MaK</div>
+                        <div>
+                            <p class="font-bold text-lg">Max aaron Kouakou</p>
+                            <p class="text-xs tracking-widest opacity-40 uppercase">Abonnée Premium</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Booking & Contact -->
+    <section class="py-section-padding bg-surface-container-high relative overflow-hidden" id="contact">
+        <div class="max-w-container-max mx-auto px-gutter relative z-10">
+            <div class="bg-surface rounded-[40px] overflow-hidden luxury-shadow flex flex-col lg:flex-row reveal">
+                <!-- Info Column -->
+                <div
+                    class="lg:w-1/3 bg-inverse-surface text-surface p-16 flex flex-col justify-between border-r border-white/5">
+                    <div>
+                        <h2 class="font-headline-md text-4xl mb-12 text-primary-fixed">Contactez-nous</h2>
+                        <ul class="space-y-12">
+                            <li class="flex items-start gap-6 group">
+                                <span
+                                    class="material-symbols-outlined text-primary-fixed mt-1 group-hover:scale-110 transition-transform">location_on</span>
+                                <div>
+                                    <p class="font-bold text-lg mb-2">Localisation</p>
+                                    <p class="opacity-60 leading-relaxed">Abidjan, Côte d'Ivoire<br /> Angré Y4 derrière
+                                        china Mall
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-6 group">
+                                <span
+                                    class="material-symbols-outlined text-primary-fixed mt-1 group-hover:scale-110 transition-transform">call</span>
+                                <div>
+                                    <p class="font-bold text-lg mb-2">Téléphone</p>
+                                    <p class="opacity-60 leading-relaxed">+225 0507719668<br />Ouvert 7j/7</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-6 group">
+                                <span
+                                    class="material-symbols-outlined text-primary-fixed mt-1 group-hover:scale-110 transition-transform">mail</span>
+                                <div>
+                                    <p class="font-bold text-lg mb-2">E-mail</p>
+                                    <p class="opacity-60 leading-relaxed">louarebecca@gmail.com</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="mt-20 p-8 rounded-3xl bg-white/5 border border-white/10">
+                        <p class="font-label-caps text-xs text-primary-fixed mb-3 tracking-widest">HORAIRES D'OUVERTURE
+                        </p>
+                        <p class="text-sm opacity-80">Lundi - Dimanche : 09h00 - 21h00</p>
+                    </div>
+                </div>
+                <!-- Form Column -->
+                <div class="lg:w-2/3 p-16" id="booking">
+                    <h3 class="font-headline-md text-4xl mb-12">Demander une réservation</h3>
+                    <form action="#" id="booking-form" class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="flex flex-col gap-3">
+                            <label class="font-label-caps text-[10px] text-on-surface-variant tracking-widest">NOM
+                                COMPLET</label>
+                            <input id="booking-name" name="nom"
+                                class="bg-surface-container-low border border-outline-variant/30 rounded-xl p-5 focus:ring-1 focus:ring-primary focus:border-primary transition-all outline-none"
+                                placeholder="Ex: Jean Dupont" type="text" />
+                        </div>
+                        <div class="flex flex-col gap-3">
+                            <label
+                                class="font-label-caps text-[10px] text-on-surface-variant tracking-widest">TÉLÉPHONE</label>
+                            <input id="booking-phone" name="telephone"
+                                class="bg-surface-container-low border border-outline-variant/30 rounded-xl p-5 focus:ring-1 focus:ring-primary focus:border-primary transition-all outline-none"
+                                placeholder="+225 ..." type="tel" />
+                        </div>
+                        <div class="flex flex-col gap-3">
+                            <label class="font-label-caps text-[10px] text-on-surface-variant tracking-widest">SOIN
+                                SOUHAITÉ</label>
+                            <select id="booking-service" name="soin"
+                                class="bg-surface-container-low border border-outline-variant/30 rounded-xl p-5 focus:ring-1 focus:ring-primary focus:border-primary transition-all outline-none appearance-none">
+                                <option>Duo Sensuel Premium</option>
+                                <option>Package Gold</option>
+                                <option>Massage à 4 mains</option>
+                                <option>Massage Relaxation</option>
+                                <option>Massage Sensuel</option>
+                                <option>Massage Pierres Chaudes</option>
+                                <option>Massage Tonic</option>
+                                <option>Massage Africain</option>
+                                <option>Soin du Visage</option>
+                                <option>Gommage Clarifiant</option>
+                                <option>Pédicure &amp; Manucure</option>
+                                <option>Epilation Cire Maillot</option>
+                            </select>
+                        </div>
+                        <div class="flex flex-col gap-3">
+                            <label class="font-label-caps text-[10px] text-on-surface-variant tracking-widest">DATE
+                                SOUHAITÉE</label>
+                            <input id="booking-date" name="date"
+                                class="bg-surface-container-low border border-outline-variant/30 rounded-xl p-5 focus:ring-1 focus:ring-primary focus:border-primary transition-all outline-none"
+                                type="date" />
+                        </div>
+                        <div class="col-span-1 md:col-span-2 flex flex-col gap-3">
+                            <label class="font-label-caps text-[10px] text-on-surface-variant tracking-widest">MESSAGE /
+                                BESOINS SPÉCIFIQUES</label>
+                            <textarea id="booking-message" name="message"
+                                class="bg-surface-container-low border border-outline-variant/30 rounded-xl p-5 focus:ring-1 focus:ring-primary focus:border-primary transition-all outline-none"
+                                placeholder="Dites-nous en plus sur vos attentes..." rows="4"></textarea>
+                        </div>
+                        <div class="col-span-1 md:col-span-2 mt-8">
+                            <button
+                                class="w-full bg-primary text-on-primary py-6 rounded-full font-label-caps text-label-caps font-bold transition-all hover:scale-[1.02] active:scale-95 shadow-xl reveal-btn"
+                                type="submit">
+                                ENVOYER MA DEMANDE DE RÉSERVATION
+                            </button>
+                            <p
+                                class="text-[10px] text-on-surface-variant text-center mt-6 uppercase tracking-widest opacity-60">
+                                Nous vous recontacterons sous 30 minutes pour confirmer votre créneau.</p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.getElementById('booking-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const nom = document.getElementById('booking-name').value;
+            const telephone = document.getElementById('booking-phone').value;
+            const soin = document.getElementById('booking-service').value;
+            const date = document.getElementById('booking-date').value;
+            const message = document.getElementById('booking-message').value;
+
+            const sujet = `Demande de réservation - ${nom}`;
+            const corps =
+                `Nom complet : ${nom}\n` +
+                `Téléphone : ${telephone}\n` +
+                `Soin souhaité : ${soin}\n` +
+                `Date souhaitée : ${date}\n` +
+                `Message / besoins spécifiques : ${message || 'Aucun'}`;
+
+            const mailtoLink =
+                `mailto:louarebecca@gmail.com?subject=${encodeURIComponent(sujet)}&body=${encodeURIComponent(corps)}`;
+
+            window.location.href = mailtoLink;
+        });
+    </script>
+    <!-- Footer -->
+    <footer class="bg-inverse-surface text-surface py-24 border-t border-white/5">
+        <div class="max-w-container-max mx-auto px-gutter grid grid-cols-1 md:grid-cols-3 gap-16">
+            <div class="col-span-1">
+                <img alt="Footer Logo" class="h-14 w-14 mb-8 brightness-150" src="/assets/images/logod.jpg" />
+                <h4 class="font-headline-md text-2xl text-primary-fixed mb-6">Massy's Spa</h4>
+                <p class="text-sm opacity-50 leading-relaxed max-w-xs">L'adresse de référence pour une expérience de
+                    bien-être exclusive et raffinée au cœur d'Abidjan.</p>
+            </div>
+            <div>
+                <h5 class="font-label-caps text-label-caps text-primary-fixed mb-8 tracking-widest">NAVIGATION</h5>
+                <ul class="space-y-4">
+                    <li><a class="text-sm opacity-50 hover:opacity-100 hover:text-primary-fixed transition-all"
+                            href="#hero">Accueil</a></li>
+                    <li><a class="text-sm opacity-50 hover:opacity-100 hover:text-primary-fixed transition-all"
+                            href="#services">Nos Soins</a></li>
+                    <li><a class="text-sm opacity-50 hover:opacity-100 hover:text-primary-fixed transition-all"
+                            href="#about">À Propos</a></li>
+                    <li><a class="text-sm opacity-50 hover:opacity-100 hover:text-primary-fixed transition-all"
+                            href="#galerie">Galerie</a></li>
+                </ul>
+            </div>
+            <div>
+                <h5 class="font-label-caps text-label-caps text-primary-fixed mb-8 tracking-widest">SUIVEZ-NOUS</h5>
+                <div class="flex gap-5 mb-10">
+                    <a class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-primary-fixed hover:text-on-primary-fixed transition-all duration-300"
+                        href="https://www.facebook.com/p/Massys-relaxation-Spa-Officielle-61576580926438/"
+                        target="_blank" rel="noreferrer noopener" aria-label="Facebook">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-5 h-5 fill-current">
+                            <path
+                                d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.99 3.66 9.12 8.44 9.88v-6.99h-2.54V12h2.54V9.8c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.24.2 2.24.2v2.47h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99C18.34 21.12 22 16.99 22 12z" />
+                        </svg>
+                    </a>
+                    <a class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-primary-fixed hover:text-on-primary-fixed transition-all duration-300"
+                        href="https://www.instagram.com/massyrelaxationplace/" target="_blank" rel="noreferrer noopener"
+                        aria-label="Instagram">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-5 h-5 fill-current">
+                            <path
+                                d="M7 2C4.243 2 2 4.243 2 7v10c0 2.757 2.243 5 5 5h10c2.757 0 5-2.243 5-5V7c0-2.757-2.243-5-5-5H7zm10 2c1.654 0 3 1.346 3 3v10c0 1.654-1.346 3-3 3H7c-1.654 0-3-1.346-3-3V7c0-1.654 1.346-3 3-3h10zm-5 2.25a4.75 4.75 0 1 0 0 9.5 4.75 4.75 0 0 0 0-9.5zm0 2a2.75 2.75 0 1 1 0 5.5 2.75 2.75 0 0 1 0-5.5zm3.5-.75a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5z" />
+                        </svg>
+                    </a>
+                </div>
+                <p class="text-[10px] opacity-30 tracking-widest">© 2026 Kadmiel Abe. TOUS DROITS RÉSERVÉS.</p>
+            </div>
+        </div>
+    </footer>
+    <!-- WhatsApp FAB -->
+    <a class="fixed bottom-10 right-10 z-[100] w-16 h-16 bg-[#25D366] text-white rounded-full flex items-center justify-center shadow-2xl hover:scale-110 active:scale-95 transition-all group animate-pulse-soft"
+        href="https://wa.me/2250507719668">
+        <span class="material-symbols-outlined text-3xl">chat</span>
+        <span
+            class="absolute right-full mr-6 bg-white text-on-surface px-6 py-3 rounded-2xl text-xs font-bold whitespace-nowrap opacity-0 group-hover:opacity-100 transition-all pointer-events-none shadow-xl border border-outline-variant/20 translate-x-4 group-hover:translate-x-0">
+            Besoin d'aide ? WhatsApp
+        </span>
+    </a>
+    <script>
+        // Intersection Observer for Reveal Animations with Staggering
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal, .reveal-btn').forEach(el => revealObserver.observe(el));
+
+        const navLinks = document.querySelectorAll('a.nav-link');
+        const sections = Array.from(document.querySelectorAll('section[id]')).filter(section => ['hero', 'services', 'about', 'galerie', 'contact'].includes(section.id));
+        const pageHeader = document.querySelector('header');
+
+        const updateActiveNav = () => {
+            const headerHeight = pageHeader ? pageHeader.offsetHeight : 90;
+            const position = window.scrollY + headerHeight + 20;
+            let currentSectionId = 'hero';
+
+            sections.forEach(section => {
+                if (position >= section.offsetTop) {
+                    currentSectionId = section.id;
+                }
+            });
+
+            navLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                const isActive = href === '#hero' ? currentSectionId === 'hero' : href === `#${currentSectionId}`;
+                link.classList.toggle('active', isActive);
+            });
+        };
+
+        updateActiveNav();
+        window.addEventListener('scroll', updateActiveNav);
+        window.addEventListener('hashchange', updateActiveNav);
+        navLinks.forEach(link => link.addEventListener('click', () => setTimeout(updateActiveNav, 50)));
+
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenuClose = document.getElementById('mobile-menu-close');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuLinks = mobileMenu ? mobileMenu.querySelectorAll('a[href^="#"], a[href="#"], a[href^="tel:"]') : [];
+
+        const toggleMobileMenu = (show) => {
+            if (!mobileMenu) return;
+            mobileMenu.classList.toggle('hidden', !show);
+            document.body.classList.toggle('overflow-hidden', show);
+            mobileMenuButton?.setAttribute('aria-expanded', show ? 'true' : 'false');
+        };
+
+        mobileMenuButton?.addEventListener('click', () => toggleMobileMenu(true));
+        mobileMenuClose?.addEventListener('click', () => toggleMobileMenu(false));
+        mobileMenuLinks.forEach(link => link.addEventListener('click', () => toggleMobileMenu(false)));
+
+        // Header scroll behavior
+        window.addEventListener('scroll', () => {
+            if (!pageHeader) return;
+            if (window.scrollY > 100) {
+                pageHeader.classList.add('py-2', 'shadow-lg', 'bg-surface/95');
+                pageHeader.classList.remove('py-4', 'bg-surface/80');
+            } else {
+                pageHeader.classList.remove('py-2', 'shadow-lg', 'bg-surface/95');
+                pageHeader.classList.add('py-4', 'bg-surface/80');
+            }
+        });
+
+        // Smooth scroll with buttery feel
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                const target = document.querySelector(href);
+                if (!target) return;
+
+                e.preventDefault();
+                const headerOffset = pageHeader ? pageHeader.offsetHeight : 90;
+                const elementPosition = target.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                navLinks.forEach(link => link.classList.toggle('active', link.getAttribute('href') === href));
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+                setTimeout(updateActiveNav, 500);
+            });
+        });
+    </script>
+</body>
+
+</html>
