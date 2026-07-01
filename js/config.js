@@ -67,13 +67,13 @@ tailwind.config = {
                 gutter: "2rem"
             },
             fontFamily: {
-                "label-caps": ["Inter"],
-                "headline-md": ["Inter"],
-                "body-md": ["Inter"],
-                "body-lg": ["Inter"],
-                "headline-xl": ["Inter"],
-                "headline-lg-mobile": ["Inter"],
-                "headline-lg": ["Inter"]
+                "label-caps": ["Poppins"],
+                "headline-md": ["Poppins"],
+                "body-md": ["Poppins"],
+                "body-lg": ["Poppins"],
+                "headline-xl": ["Poppins"],
+                "headline-lg-mobile": ["Poppins"],
+                "headline-lg": ["Poppins"]
             },
             fontSize: {
                 "label-caps": ["12px", { lineHeight: "16px", letterSpacing: "0.1em", fontWeight: "600" }],
