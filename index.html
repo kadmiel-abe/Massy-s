@@ -196,6 +196,92 @@
             background: #735c00;
         }
 
+        .about-card {
+            position: relative;
+            border-radius: 1rem;
+            padding: 1.25rem;
+            background: transparent;
+            border: 1px solid transparent;
+            transition: transform 0.35s cubic-bezier(0.22, 0.8, 0.32, 1),
+                box-shadow 0.35s ease,
+                background-color 0.35s ease,
+                border-color 0.35s ease;
+        }
+
+        .about-card:hover,
+        .about-card:focus-within {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 45px -28px rgba(115, 92, 0, 0.45);
+            background-color: rgba(115, 92, 0, 0.06);
+            border-color: rgba(115, 92, 0, 0.18);
+        }
+
+        .about-card:active {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 28px -22px rgba(115, 92, 0, 0.35);
+        }
+
+        .about-card::before {
+            content: '';
+            position: absolute;
+            left: 0.75rem;
+            top: 1.25rem;
+            width: 4px;
+            height: calc(100% - 2.5rem);
+            border-radius: 9999px;
+            background-color: transparent;
+            opacity: 0;
+            transition: background-color 0.35s ease, opacity 0.35s ease;
+        }
+
+        .about-card:hover::before,
+        .about-card:focus-within::before {
+            background-color: #735c00;
+            opacity: 1;
+        }
+
+        .about-card-icon {
+            transition: transform 0.35s cubic-bezier(0.22, 0.8, 0.32, 1),
+                background-color 0.35s ease,
+                color 0.35s ease;
+        }
+
+        .about-card:hover .about-card-icon,
+        .about-card:focus-within .about-card-icon {
+            transform: rotate(10deg) scale(1.05);
+            background-color: #735c00;
+            color: #ffffff;
+        }
+
+        .about-card h4 {
+            transition: color 0.35s ease;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .about-card:hover h4,
+        .about-card:focus-within h4 {
+            color: #735c00;
+        }
+
+        .reveal-testimonial {
+            opacity: 0;
+            transform: translateX(-60px);
+            transition: opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1), transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+            will-change: opacity, transform;
+        }
+
+        .reveal-testimonial.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .reveal-testimonial {
+                transform: translateX(0);
+                transition: opacity 0.4s ease;
+            }
+        }
+
         #hero,
         #services,
         #about,
@@ -386,7 +472,7 @@
     <section class="py-section-padding bg-surface" id="services">
         <div class="max-w-container-max mx-auto px-gutter">
             <div class="text-center mb-24 reveal">
-                <h2 class="font-headline-lg text-headline-lg mb-6 text-on-surface">Nos Soins Signature</h2>
+                <h2 class="font-headline-lg text-3xl mb-6 text-on-surface">Nos Soins Signature</h2>
                 <div class="w-20 h-1 bg-primary mx-auto mb-8"></div>
                 <p class="max-w-2xl mx-auto text-on-surface-variant font-body-md text-lg">Une sélection exclusive de
                     traitements pour revitaliser votre corps et apaiser votre esprit.</p>
@@ -621,16 +707,16 @@
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
                 <div class="reveal reveal-left">
                     <span class="font-label-caps text-primary tracking-[0.3em] block mb-6">L'EXCELLENCE MASSY'S</span>
-                    <h2 class="font-headline-lg text-headline-lg mb-10 leading-tight">Un sanctuaire de paix au cœur de
+                    <h2 class="font-headline-lg text-3xl mb-10 leading-tight">Un sanctuaire de paix au cœur de
                         la métropole</h2>
                     <p class="text-body-lg text-on-surface-variant mb-14 leading-relaxed">
                         Depuis notre création, nous nous engageons à offrir une expérience de bien-être sans compromis.
                         Notre spa est un refuge minimaliste où le temps s'efface au profit de votre ressourcement total.
                     </p>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-10">
-                        <div class="flex gap-5 group reveal">
+                        <div class="about-card flex gap-5 group reveal">
                             <div
-                                class="flex-shrink-0 w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary transition-colors group-hover:bg-primary group-hover:text-white">
+                                class="about-card-icon flex-shrink-0 w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary transition-colors group-hover:bg-primary group-hover:text-white">
                                 <span class="material-symbols-outlined">person_celebrate</span>
                             </div>
                             <div>
@@ -639,9 +725,9 @@
                                     internationales et rituels ancestraux.</p>
                             </div>
                         </div>
-                        <div class="flex gap-5 group reveal" style="transition-delay: 100ms;">
+                        <div class="about-card flex gap-5 group reveal" style="transition-delay: 100ms;">
                             <div
-                                class="flex-shrink-0 w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary transition-colors group-hover:bg-primary group-hover:text-white">
+                                class="about-card-icon flex-shrink-0 w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary transition-colors group-hover:bg-primary group-hover:text-white">
                                 <span class="material-symbols-outlined">clean_hands</span>
                             </div>
                             <div>
@@ -650,9 +736,9 @@
                                     et cosmétiques naturels rares.</p>
                             </div>
                         </div>
-                        <div class="flex gap-5 group reveal" style="transition-delay: 200ms;">
+                        <div class="about-card flex gap-5 group reveal" style="transition-delay: 200ms;">
                             <div
-                                class="flex-shrink-0 w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary transition-colors group-hover:bg-primary group-hover:text-white">
+                                class="about-card-icon flex-shrink-0 w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary transition-colors group-hover:bg-primary group-hover:text-white">
                                 <span class="material-symbols-outlined">spa</span>
                             </div>
                             <div>
@@ -661,9 +747,9 @@
                                     la détente sensorielle immédiate.</p>
                             </div>
                         </div>
-                        <div class="flex gap-5 group reveal" style="transition-delay: 300ms;">
+                        <div class="about-card flex gap-5 group reveal" style="transition-delay: 300ms;">
                             <div
-                                class="flex-shrink-0 w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary transition-colors group-hover:bg-primary group-hover:text-white">
+                                class="about-card-icon flex-shrink-0 w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary transition-colors group-hover:bg-primary group-hover:text-white">
                                 <span class="material-symbols-outlined">schedule</span>
                             </div>
                             <div>
@@ -693,7 +779,7 @@
     <section class="py-section-padding bg-surface" id="galerie">
         <div class="max-w-container-max mx-auto px-gutter">
             <div class="text-center mb-24 reveal">
-                <h2 class="font-headline-lg text-headline-lg mb-6">Galerie Immersive</h2>
+                <h2 class="font-headline-lg text-3xl mb-6">Galerie Immersive</h2>
                 <p class="font-label-caps text-primary tracking-widest">DÉCOUVREZ NOTRE UNIVERS EN IMAGES</p>
             </div>
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:h-[900px]">
@@ -727,7 +813,7 @@
         </div>
         <div class="max-w-container-max mx-auto px-gutter relative z-10">
             <div class="text-center mb-24 reveal">
-                <h2 class="font-headline-lg text-headline-lg mb-6 text-primary-fixed">Paroles de Sérénité</h2>
+                <h2 class="font-headline-lg text-3xl mb-6 text-primary-fixed">Paroles de Sérénité</h2>
                 <p class="font-body-md text-lg opacity-60">Ce que nos hôtes disent de leur expérience chez Massy's.</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
@@ -826,7 +912,7 @@
                 <div
                     class="w-full lg:w-1/3 bg-inverse-surface text-surface p-6 sm:p-10 lg:p-16 flex flex-col justify-between lg:border-r lg:border-white/5">
                     <div>
-                        <h2 class="font-headline-md text-3xl sm:text-4xl mb-8 sm:mb-12 text-primary-fixed">Contactez-nous</h2>
+                        <h2 class="font-headline-md text-3xl sm:text-[3rem] mb-8 sm:mb-12 text-primary-fixed">Contactez-nous</h2>
                         <ul class="space-y-8 sm:space-y-12">
                             <li class="flex items-start gap-4 sm:gap-6 group">
                                 <span
@@ -947,24 +1033,26 @@
                 `Date souhaitée : ${date}\n` +
                 `Message / besoins spécifiques : ${message || 'Aucun'}`;
 
-            const mailtoLink =
-                `mailto:louarebecca@gmail.com?subject=${encodeURIComponent(sujet)}&body=${encodeURIComponent(corps)}`;
+            const gmailLink =
+                `https://mail.google.com/mail/?view=cm&fs=1&to=louarebecca@gmail.com&su=${encodeURIComponent(sujet)}&body=${encodeURIComponent(corps)}`;
 
-            window.location.href = mailtoLink;
+            window.location.href = gmailLink;
         });
     </script>
     <!-- Footer -->
     <footer class="bg-inverse-surface text-surface py-24 border-t border-white/5">
-        <div class="max-w-container-max mx-auto px-gutter grid grid-cols-1 md:grid-cols-3 gap-16">
-            <div class="col-span-1">
-                <img alt="Footer Logo" class="h-14 w-14 mb-8 brightness-150" src="/assets/images/logod.jpg" />
-                <h4 class="font-headline-md text-2xl text-primary-fixed mb-6">Massy's Spa</h4>
-                <p class="text-sm opacity-50 leading-relaxed max-w-xs">L'adresse de référence pour une expérience de
-                    bien-être exclusive et raffinée au cœur d'Abidjan.</p>
+        <div class="max-w-container-max mx-auto px-gutter grid grid-cols-1 md:grid-cols-3 gap-16 items-start">
+            <div class="col-span-1 flex flex-col items-start gap-6 border-t border-white/5 pt-10 first:border-t-0 first:pt-0 md:border-t-0 md:pt-0">
+                <img alt="Footer Logo" class="h-14 w-14 mb-4 brightness-150" src="/assets/images/logod.jpg" />
+                <div class="max-w-xs text-left">
+                    <h4 class="font-headline-md text-2xl text-primary-fixed mb-4">Massy's Spa</h4>
+                    <p class="text-sm opacity-50 leading-relaxed">L'adresse de référence pour une expérience de
+                        bien-être exclusive et raffinée au cœur d'Abidjan.</p>
+                </div>
             </div>
-            <div>
-                <h5 class="font-label-caps text-label-caps text-primary-fixed mb-8 tracking-widest">NAVIGATION</h5>
-                <ul class="space-y-4">
+            <div class="flex flex-col items-start gap-6 border-t border-white/5 pt-10 md:border-t-0 md:pt-0">
+                <h5 class="font-label-caps text-label-caps text-primary-fixed mb-0 tracking-widest">NAVIGATION</h5>
+                <ul class="space-y-4 text-left">
                     <li><a class="text-sm opacity-50 hover:opacity-100 hover:text-primary-fixed transition-all"
                             href="#hero">Accueil</a></li>
                     <li><a class="text-sm opacity-50 hover:opacity-100 hover:text-primary-fixed transition-all"
@@ -975,9 +1063,9 @@
                             href="#galerie">Galerie</a></li>
                 </ul>
             </div>
-            <div>
-                <h5 class="font-label-caps text-label-caps text-primary-fixed mb-8 tracking-widest">SUIVEZ-NOUS</h5>
-                <div class="flex gap-5 mb-10">
+            <div class="flex flex-col items-start gap-6 border-t border-white/5 pt-10 md:border-t-0 md:pt-0">
+                <h5 class="font-label-caps text-label-caps text-primary-fixed mb-0 tracking-widest">SUIVEZ-NOUS</h5>
+                <div class="flex gap-5 justify-start mb-4">
                     <a class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-primary-fixed hover:text-on-primary-fixed transition-all duration-300"
                         href="https://www.facebook.com/p/Massys-relaxation-Spa-Officielle-61576580926438/"
                         target="_blank" rel="noreferrer noopener" aria-label="Facebook">
@@ -995,7 +1083,7 @@
                         </svg>
                     </a>
                 </div>
-                <p class="text-[10px] opacity-30 tracking-widest">© 2026 Kadmiel Abe. TOUS DROITS RÉSERVÉS.</p>
+                <p class="text-[10px] opacity-30 tracking-widest text-center md:text-left">© 2026 Kadmiel Abe. TOUS DROITS RÉSERVÉS.</p>
             </div>
         </div>
     </footer>
@@ -1024,7 +1112,7 @@
             });
         }, observerOptions);
 
-        document.querySelectorAll('.reveal, .reveal-btn').forEach(el => revealObserver.observe(el));
+        document.querySelectorAll('.reveal, .reveal-btn, .reveal-testimonial').forEach(el => revealObserver.observe(el));
 
         const navLinks = document.querySelectorAll('a.nav-link');
         const sections = Array.from(document.querySelectorAll('section[id]')).filter(section => ['hero', 'services', 'about', 'galerie', 'contact'].includes(section.id));
