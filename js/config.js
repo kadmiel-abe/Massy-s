@@ -68,12 +68,12 @@ tailwind.config = {
             },
             fontFamily: {
                 "label-caps": ["Inter"],
-                "headline-md": ["Playfair Display"],
+                "headline-md": ["Inter"],
                 "body-md": ["Inter"],
                 "body-lg": ["Inter"],
-                "headline-xl": ["Playfair Display"],
-                "headline-lg-mobile": ["Playfair Display"],
-                "headline-lg": ["Playfair Display"]
+                "headline-xl": ["Inter"],
+                "headline-lg-mobile": ["Inter"],
+                "headline-lg": ["Inter"]
             },
             fontSize: {
                 "label-caps": ["12px", { lineHeight: "16px", letterSpacing: "0.1em", fontWeight: "600" }],

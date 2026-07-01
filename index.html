@@ -7,15 +7,345 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <link rel="icon" type="image/jpeg" href="/assets/images/logod.jpg" />
     <title>Massy's Relaxation</title>
-    <script src="assets/js/config.js"></script>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap"
-        rel="stylesheet" />
-    <link
+href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&amp;family=Montserrat:wght@300;400;500;600&amp;display=swap"
+rel="stylesheet" />
+        <link
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
         rel="stylesheet" />
-    <link rel="stylesheet" href="assets/css/style.css">
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-error": "#ffffff",
+                        "on-tertiary-fixed-variant": "#004d67",
+                        "error-container": "#ffdad6",
+                        "secondary": "#5f5e5e",
+                        "surface-container-low": "#f5f3ee",
+                        "on-secondary": "#ffffff",
+                        "surface-container": "#f0eee9",
+                        "surface-bright": "#fbf9f4",
+                        "secondary-fixed": "#e5e2e1",
+                        "on-background": "#1b1c19",
+                        "background": "#fbf9f4",
+                        "on-secondary-fixed-variant": "#474646",
+                        "inverse-on-surface": "#f2f1ec",
+                        "on-secondary-fixed": "#1c1b1b",
+                        "on-tertiary": "#ffffff",
+                        "inverse-surface": "#30312e",
+                        "outline": "#7f7663",
+                        "on-primary": "#ffffff",
+                        "outline-variant": "#d0c5af",
+                        "on-primary-fixed-variant": "#574500",
+                        "on-tertiary-container": "#004b64",
+                        "on-tertiary-fixed": "#001e2b",
+                        "tertiary-fixed": "#c1e8ff",
+                        "tertiary": "#006687",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-high": "#eae8e3",
+                        "surface-container-highest": "#e4e2dd",
+                        "tertiary-container": "#6cbce3",
+                        "surface": "#fbf9f4",
+                        "on-secondary-container": "#656464",
+                        "on-surface-variant": "#4d4635",
+                        "tertiary-fixed-dim": "#81d0f8",
+                        "surface-variant": "#e4e2dd",
+                        "primary-fixed": "#ffe088",
+                        "surface-tint": "#735c00",
+                        "secondary-container": "#e5e2e1",
+                        "secondary-fixed-dim": "#c9c6c5",
+                        "primary-fixed-dim": "#e9c349",
+                        "on-primary-container": "#554300",
+                        "on-error-container": "#93000a",
+                        "primary-container": "#d4af37",
+                        "on-surface": "#1b1c19",
+                        "surface-dim": "#dbdad5",
+                        "on-primary-fixed": "#241a00",
+                        "error": "#ba1a1a",
+                        "primary": "#735c00",
+                        "inverse-primary": "#e9c349"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-max": "1280px",
+                        "stack-md": "2rem",
+                        "section-padding": "10rem",
+                        "stack-sm": "1rem",
+                        "stack-lg": "4rem",
+                        "gutter": "2rem"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["Montserrat"],
+                        "headline-md": ["Playfair Display"],
+                        "body-md": ["Montserrat"],
+                        "body-lg": ["Montserrat"],
+                        "headline-xl": ["Playfair Display"],
+                        "headline-lg-mobile": ["Playfair Display"],
+                        "headline-lg": ["Playfair Display"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600" }],
+                        "headline-md": ["32px", { "lineHeight": "40px", "fontWeight": "500" }],
+                        "body-md": ["16px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "32px", "fontWeight": "400" }],
+                        "headline-xl": ["64px", { "lineHeight": "72px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg-mobile": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                        "headline-lg": ["48px", { "lineHeight": "56px", "fontWeight": "600" }]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .luxury-shadow {
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
+        }
+
+        .glass-header {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px) scale(0.98);
+            transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1), transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+            will-change: opacity, transform;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        .reveal-left {
+            transform: translateX(-35px) scale(0.98);
+        }
+
+        .reveal-left.active {
+            transform: translateX(0) scale(1);
+        }
+
+        .reveal-right {
+            transform: translateX(35px) scale(0.98);
+        }
+
+        .reveal-right.active {
+            transform: translateX(0) scale(1);
+        }
+
+        .reveal-scale {
+            transform: translateY(24px) scale(0.94);
+        }
+
+        .reveal-scale.active {
+            transform: translateY(0) scale(1);
+        }
+
+        .reveal-btn {
+            opacity: 0;
+            transform: translateY(20px) scale(0.97);
+            transition: opacity 0.75s ease, transform 0.75s ease;
+            will-change: opacity, transform;
+        }
+
+        .reveal-btn.active {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -0.35rem;
+            width: 0;
+            height: 3px;
+            background: #735c00;
+            transition: width 0.3s ease, background 0.3s ease;
+        }
+
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .nav-link.active {
+            color: #735c00 !important;
+            font-weight: 700;
+        }
+
+        .nav-link.active::after {
+            background: #735c00;
+        }
+
+        .about-card {
+            position: relative;
+            border-radius: 1rem;
+            padding: 1.25rem;
+            background: transparent;
+            border: 1px solid transparent;
+            transition: transform 0.35s cubic-bezier(0.22, 0.8, 0.32, 1),
+                box-shadow 0.35s ease,
+                background-color 0.35s ease,
+                border-color 0.35s ease;
+        }
+
+        .about-card:hover,
+        .about-card:focus-within {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 45px -28px rgba(115, 92, 0, 0.45);
+            background-color: rgba(115, 92, 0, 0.06);
+            border-color: rgba(115, 92, 0, 0.18);
+        }
+
+        .about-card:active {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 28px -22px rgba(115, 92, 0, 0.35);
+        }
+
+        .about-card::before {
+            content: '';
+            position: absolute;
+            left: 0.75rem;
+            top: 1.25rem;
+            width: 4px;
+            height: calc(100% - 2.5rem);
+            border-radius: 9999px;
+            background-color: transparent;
+            opacity: 0;
+            transition: background-color 0.35s ease, opacity 0.35s ease;
+        }
+
+        .about-card:hover::before,
+        .about-card:focus-within::before {
+            background-color: #735c00;
+            opacity: 1;
+        }
+
+        .about-card-icon {
+            transition: transform 0.35s cubic-bezier(0.22, 0.8, 0.32, 1),
+                background-color 0.35s ease,
+                color 0.35s ease;
+        }
+
+        .about-card:hover .about-card-icon,
+        .about-card:focus-within .about-card-icon {
+            transform: rotate(10deg) scale(1.05);
+            background-color: #735c00;
+            color: #ffffff;
+        }
+
+        .about-card h4 {
+            transition: color 0.35s ease;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .about-card:hover h4,
+        .about-card:focus-within h4 {
+            color: #735c00;
+        }
+
+        .reveal-testimonial {
+            opacity: 0;
+            transform: translateX(-60px);
+            transition: opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1), transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+            will-change: opacity, transform;
+        }
+
+        .reveal-testimonial.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .reveal-testimonial {
+                transform: translateX(0);
+                transition: opacity 0.4s ease;
+            }
+        }
+
+        #hero,
+        #services,
+        #about,
+        #galerie,
+        #contact {
+            scroll-margin-top: 7.5rem;
+        }
+
+        @keyframes slow-zoom {
+            0% {
+                transform: scale(1);
+            }
+
+            100% {
+                transform: scale(1.1);
+            }
+        }
+
+        .animate-slow-zoom {
+            animation: slow-zoom 20s ease-in-out infinite alternate;
+        }
+
+        @keyframes pulse-soft {
+
+            0%,
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4);
+            }
+
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+            }
+        }
+
+        .animate-pulse-soft {
+            animation: pulse-soft 2s infinite;
+        }
+
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.15);
+            border-color: #d4af37;
+        }
+
+        /* Custom scrollbar for premium feel */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #fbf9f4;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #d4af37;
+            border-radius: 10px;
+        }
+    </style>
 </head>
 
 <body
@@ -151,7 +481,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Duo Sensuel (Featured Large Card) -->
                 <div
-                    class="lg:col-span-2 reveal card-hover relative rounded-2xl overflow-hidden bg-inverse-surface text-white flex flex-col md:flex-row border border-outline-variant/10">
+                    class="lg:col-span-2 reveal card-hover premium-card relative rounded-2xl overflow-hidden bg-inverse-surface text-white flex flex-col md:flex-row border border-outline-variant/10">
                     <div class="w-full md:w-1/2 h-80 md:h-full relative overflow-hidden">
                         <img alt="Duo Sensuel Premium"
                             class="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
@@ -176,7 +506,7 @@
                     </div>
                 </div>
                 <!-- Package Gold -->
-                <div class="reveal card-hover rounded-2xl overflow-hidden bg-primary-container text-on-primary-container border border-primary/20 flex flex-col"
+                <div class="reveal fast-reveal card-hover premium-card rounded-2xl overflow-hidden bg-primary-container text-on-primary-container border border-primary/20 flex flex-col"
                     style="transition-delay: 100ms;">
                     <div class="h-64 overflow-hidden relative">
                         <img alt="Package Gold"
@@ -198,7 +528,7 @@
                     </div>
                 </div>
                 <!-- Massage à 4 mains (New) -->
-                <div class="reveal card-hover rounded-2xl overflow-hidden bg-surface-container-lowest border border-outline-variant/30 flex flex-col"
+                <div class="reveal fast-reveal card-hover rounded-2xl overflow-hidden bg-surface-container-lowest border border-outline-variant/30 flex flex-col"
                     style="transition-delay: 150ms;">
                     <div class="h-64 overflow-hidden">
                         <img alt="Massage à 4 mains"
@@ -216,7 +546,7 @@
                     </div>
                 </div>
                 <!-- Massage Relaxation -->
-                <div class="reveal card-hover rounded-2xl overflow-hidden bg-surface-container-lowest border border-outline-variant/30 flex flex-col"
+                <div class="reveal fast-reveal card-hover rounded-2xl overflow-hidden bg-surface-container-lowest border border-outline-variant/30 flex flex-col"
                     style="transition-delay: 200ms;">
                     <div class="h-64 overflow-hidden">
                         <img alt="Massage Relaxation"
@@ -233,7 +563,7 @@
                     </div>
                 </div>
                 <!-- Massage Sensuel -->
-                <div class="reveal card-hover rounded-2xl overflow-hidden bg-surface-container-lowest border border-outline-variant/30 flex flex-col"
+                <div class="reveal fast-reveal card-hover rounded-2xl overflow-hidden bg-surface-container-lowest border border-outline-variant/30 flex flex-col"
                     style="transition-delay: 250ms;">
                     <div class="h-64 overflow-hidden">
                         <img alt="Massage Sensuel"
@@ -250,7 +580,7 @@
                     </div>
                 </div>
                 <!-- Massage aux pierres chaudes (New) -->
-                <div class="reveal card-hover rounded-2xl overflow-hidden bg-surface-container-lowest border border-outline-variant/30 flex flex-col"
+                <div class="reveal fast-reveal card-hover rounded-2xl overflow-hidden bg-surface-container-lowest border border-outline-variant/30 flex flex-col"
                     style="transition-delay: 300ms;">
                     <div class="h-64 overflow-hidden">
                         <img alt="Massage aux pierres chaudes"
@@ -267,7 +597,7 @@
                     </div>
                 </div>
                 <!-- Massage Tonic anti-douleur (New) -->
-                <div class="reveal card-hover rounded-2xl overflow-hidden bg-surface-container-lowest border border-outline-variant/30 flex flex-col"
+                <div class="reveal fast-reveal card-hover rounded-2xl overflow-hidden bg-surface-container-lowest border border-outline-variant/30 flex flex-col"
                     style="transition-delay: 350ms;">
                     <div class="h-64 overflow-hidden">
                         <img alt="Massage Tonic"
@@ -284,7 +614,7 @@
                     </div>
                 </div>
                 <!-- Massage Africain (New) -->
-                <div class="reveal card-hover rounded-2xl overflow-hidden bg-surface-container-lowest border border-outline-variant/30 flex flex-col"
+                <div class="reveal fast-reveal card-hover rounded-2xl overflow-hidden bg-surface-container-lowest border border-outline-variant/30 flex flex-col"
                     style="transition-delay: 400ms;">
                     <div class="h-64 overflow-hidden">
                         <img alt="Massage Africain"
@@ -301,7 +631,7 @@
                     </div>
                 </div>
                 <!-- Soin Visage -->
-                <div class="reveal card-hover rounded-2xl overflow-hidden bg-surface-container-lowest border border-outline-variant/30 flex flex-col"
+                <div class="reveal fast-reveal card-hover rounded-2xl overflow-hidden bg-surface-container-lowest border border-outline-variant/30 flex flex-col"
                     style="transition-delay: 450ms;">
                     <div class="h-64 overflow-hidden">
                         <img alt="Soin Visage"
@@ -318,7 +648,7 @@
                     </div>
                 </div>
                 <!-- Gommage -->
-                <div class="reveal card-hover rounded-2xl overflow-hidden bg-surface-container-lowest border border-outline-variant/30 flex flex-col"
+                <div class="reveal fast-reveal card-hover rounded-2xl overflow-hidden bg-surface-container-lowest border border-outline-variant/30 flex flex-col"
                     style="transition-delay: 500ms;">
                     <div class="h-64 overflow-hidden">
                         <img alt="Gommage Clarifiant"
@@ -335,7 +665,7 @@
                     </div>
                 </div>
                 <!-- Pédicure & Manucure (New) -->
-                <div class="reveal card-hover rounded-2xl overflow-hidden bg-surface-container-lowest border border-outline-variant/30 flex flex-col"
+                <div class="reveal fast-reveal card-hover rounded-2xl overflow-hidden bg-surface-container-lowest border border-outline-variant/30 flex flex-col"
                     style="transition-delay: 550ms;">
                     <div class="h-64 overflow-hidden">
                         <img alt="Pédicure Manucure"
@@ -685,6 +1015,30 @@
         </div>
     </section>
 
+    <script>
+        document.getElementById('booking-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const nom = document.getElementById('booking-name').value;
+            const telephone = document.getElementById('booking-phone').value;
+            const soin = document.getElementById('booking-service').value;
+            const date = document.getElementById('booking-date').value;
+            const message = document.getElementById('booking-message').value;
+
+            const sujet = `Demande de réservation - ${nom}`;
+            const corps =
+                `Nom complet : ${nom}\n` +
+                `Téléphone : ${telephone}\n` +
+                `Soin souhaité : ${soin}\n` +
+                `Date souhaitée : ${date}\n` +
+                `Message / besoins spécifiques : ${message || 'Aucun'}`;
+
+            const gmailLink =
+                `https://mail.google.com/mail/?view=cm&fs=1&to=louarebecca@gmail.com&su=${encodeURIComponent(sujet)}&body=${encodeURIComponent(corps)}`;
+
+            window.location.href = gmailLink;
+        });
+    </script>
     <!-- Footer -->
     <footer class="bg-inverse-surface text-surface py-24 border-t border-white/5">
         <div class="max-w-container-max mx-auto px-gutter grid grid-cols-1 md:grid-cols-3 gap-16 items-start">
@@ -742,18 +1096,123 @@
             Besoin d'aide ? WhatsApp
         </span>
     </a>
-    <a class="fixed bottom-10 right-10 z-[100] w-16 h-16 bg-[#25D366] text-white rounded-full flex items-center justify-center shadow-2xl hover:scale-110 active:scale-95 transition-all group animate-pulse-soft"
-        href="https://wa.me/2250507719668">
-        <span class="material-symbols-outlined text-3xl">chat</span>
-        <span
-            class="absolute right-full mr-6 bg-white text-on-surface px-6 py-3 rounded-2xl text-xs font-bold whitespace-nowrap opacity-0 group-hover:opacity-100 transition-all pointer-events-none shadow-xl border border-outline-variant/20 translate-x-4 group-hover:translate-x-0">
-            Besoin d'aide ? WhatsApp
-        </span>
-    </a>
-    <script src="assets/js/booking.js"></script>
-    <script src="assets/js/animations.js"></script>
-    <script src="assets/js/mobile-menu.js"></script>
-    <script src="assets/js/navigation.js"></script>
+    <script>
+        // Intersection Observer for Reveal Animations with Staggering
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal, .reveal-btn, .reveal-testimonial').forEach(el => revealObserver.observe(el));
+
+        const navLinks = document.querySelectorAll('a.nav-link');
+        const sections = Array.from(document.querySelectorAll('section[id]')).filter(section => ['hero', 'services', 'about', 'galerie', 'contact'].includes(section.id));
+        const pageHeader = document.querySelector('header');
+
+        const updateActiveNav = () => {
+            const headerHeight = pageHeader ? pageHeader.offsetHeight : 90;
+            const position = window.scrollY + headerHeight + 20;
+            let currentSectionId = 'hero';
+
+            sections.forEach(section => {
+                if (position >= section.offsetTop) {
+                    currentSectionId = section.id;
+                }
+            });
+
+            navLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                const isActive = href === '#hero' ? currentSectionId === 'hero' : href === `#${currentSectionId}`;
+                link.classList.toggle('active', isActive);
+            });
+        };
+
+        updateActiveNav();
+        window.addEventListener('scroll', updateActiveNav);
+        window.addEventListener('hashchange', updateActiveNav);
+        navLinks.forEach(link => link.addEventListener('click', () => setTimeout(updateActiveNav, 50)));
+
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenuClose = document.getElementById('mobile-menu-close');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+        const mobileMenuLinks = mobileMenu ? mobileMenu.querySelectorAll('a[href^="#"], a[href="#"], a[href^="tel:"]') : [];
+
+        const toggleMobileMenu = (show) => {
+            if (!mobileMenu || !mobileMenuOverlay) return;
+
+            if (show) {
+                mobileMenu.classList.remove('hidden');
+                mobileMenuOverlay.classList.remove('hidden');
+                requestAnimationFrame(() => {
+                    mobileMenu.classList.remove('translate-x-full', 'opacity-0', 'pointer-events-none');
+                    mobileMenu.classList.add('translate-x-0', 'opacity-100', 'pointer-events-auto');
+                    mobileMenuOverlay.classList.remove('opacity-0', 'pointer-events-none');
+                    mobileMenuOverlay.classList.add('opacity-100', 'pointer-events-auto');
+                });
+                document.body.classList.add('overflow-hidden');
+            } else {
+                mobileMenu.classList.remove('translate-x-0', 'opacity-100', 'pointer-events-auto');
+                mobileMenu.classList.add('translate-x-full', 'opacity-0', 'pointer-events-none');
+                mobileMenuOverlay.classList.remove('opacity-100', 'pointer-events-auto');
+                mobileMenuOverlay.classList.add('opacity-0', 'pointer-events-none');
+                document.body.classList.remove('overflow-hidden');
+                setTimeout(() => {
+                    mobileMenu.classList.add('hidden');
+                    mobileMenuOverlay.classList.add('hidden');
+                }, 300);
+            }
+
+            mobileMenuButton?.setAttribute('aria-expanded', show ? 'true' : 'false');
+        };
+
+        mobileMenuButton?.addEventListener('click', () => toggleMobileMenu(true));
+        mobileMenuClose?.addEventListener('click', () => toggleMobileMenu(false));
+        mobileMenuOverlay?.addEventListener('click', () => toggleMobileMenu(false));
+        mobileMenuLinks.forEach(link => link.addEventListener('click', () => toggleMobileMenu(false)));
+
+        // Header scroll behavior
+        window.addEventListener('scroll', () => {
+            if (!pageHeader) return;
+            if (window.scrollY > 100) {
+                pageHeader.classList.add('py-2', 'shadow-lg', 'bg-surface/95');
+                pageHeader.classList.remove('py-4', 'bg-surface/80');
+            } else {
+                pageHeader.classList.remove('py-2', 'shadow-lg', 'bg-surface/95');
+                pageHeader.classList.add('py-4', 'bg-surface/80');
+            }
+        });
+
+        // Smooth scroll with buttery feel
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                const target = document.querySelector(href);
+                if (!target) return;
+
+                e.preventDefault();
+                const headerOffset = pageHeader ? pageHeader.offsetHeight : 90;
+                const elementPosition = target.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                navLinks.forEach(link => link.classList.toggle('active', link.getAttribute('href') === href));
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+                setTimeout(updateActiveNav, 500);
+            });
+        });
+    </script>
 </body>
 
 </html>
