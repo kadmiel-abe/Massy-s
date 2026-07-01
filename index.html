@@ -306,27 +306,47 @@
                 </a>
             </div>
         </div>
+        <div id="mobile-menu-overlay"
+            class="fixed inset-0 z-[60] md:hidden bg-black/55 backdrop-blur-sm opacity-0 pointer-events-none transition-all duration-500"></div>
         <div id="mobile-menu"
-            class="absolute inset-x-0 top-full z-40 hidden bg-surface/95 backdrop-blur-xl border-b border-outline-variant/20 shadow-xl">
-            <div class="px-6 pb-8 pt-8">
+            class="fixed inset-y-0 right-0 z-[70] md:hidden w-[85vw] max-w-[320px] bg-surface/95 backdrop-blur-2xl border-l border-outline-variant/20 shadow-2xl transform translate-x-full opacity-0 pointer-events-none transition-all duration-500">
+            <div class="flex items-center justify-between px-6 py-5 border-b border-outline-variant/20">
+                <span class="font-label-caps text-[11px] tracking-[0.35em] text-primary">Menu</span>
                 <button id="mobile-menu-close" type="button"
-                    class="mb-6 inline-flex items-center justify-center rounded-full border border-outline-variant/30 w-11 h-11 text-on-surface-variant hover:bg-surface/80 transition-all">
+                    class="inline-flex items-center justify-center rounded-full border border-outline-variant/30 w-11 h-11 text-on-surface-variant hover:bg-surface/80 transition-all">
                     <span class="material-symbols-outlined text-2xl">close</span>
                 </button>
-                <nav class="flex flex-col gap-4">
-                    <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-all nav-link"
-                        href="#hero">Accueil</a>
-                    <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-all nav-link"
-                        href="#services">Services</a>
-                    <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-all nav-link"
-                        href="#about">À propos</a>
-                    <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-all nav-link"
-                        href="#galerie">Galerie</a>
-                    <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-all nav-link"
-                        href="#contact">Contact</a>
+            </div>
+            <div class="px-6 py-6">
+                <nav class="flex flex-col gap-2">
+                    <a class="group flex items-center justify-between rounded-2xl px-4 py-4 text-on-surface-variant hover:bg-primary/10 hover:text-primary transition-all"
+                        href="#hero">
+                        <span class="font-label-caps text-label-caps">Accueil</span>
+                        <span class="material-symbols-outlined text-lg transition-transform group-hover:translate-x-1">arrow_forward</span>
+                    </a>
+                    <a class="group flex items-center justify-between rounded-2xl px-4 py-4 text-on-surface-variant hover:bg-primary/10 hover:text-primary transition-all"
+                        href="#services">
+                        <span class="font-label-caps text-label-caps">Services</span>
+                        <span class="material-symbols-outlined text-lg transition-transform group-hover:translate-x-1">arrow_forward</span>
+                    </a>
+                    <a class="group flex items-center justify-between rounded-2xl px-4 py-4 text-on-surface-variant hover:bg-primary/10 hover:text-primary transition-all"
+                        href="#about">
+                        <span class="font-label-caps text-label-caps">À propos</span>
+                        <span class="material-symbols-outlined text-lg transition-transform group-hover:translate-x-1">arrow_forward</span>
+                    </a>
+                    <a class="group flex items-center justify-between rounded-2xl px-4 py-4 text-on-surface-variant hover:bg-primary/10 hover:text-primary transition-all"
+                        href="#galerie">
+                        <span class="font-label-caps text-label-caps">Galerie</span>
+                        <span class="material-symbols-outlined text-lg transition-transform group-hover:translate-x-1">arrow_forward</span>
+                    </a>
+                    <a class="group flex items-center justify-between rounded-2xl px-4 py-4 text-on-surface-variant hover:bg-primary/10 hover:text-primary transition-all"
+                        href="#contact">
+                        <span class="font-label-caps text-label-caps">Contact</span>
+                        <span class="material-symbols-outlined text-lg transition-transform group-hover:translate-x-1">arrow_forward</span>
+                    </a>
                 </nav>
-                <div class="mt-8 flex flex-col gap-4">
-                    <a class="inline-flex items-center gap-2 px-4 py-4 rounded-2xl bg-primary text-on-primary font-label-caps text-label-caps justify-center"
+                <div class="mt-8 flex flex-col gap-3">
+                    <a class="inline-flex items-center gap-2 px-4 py-4 rounded-2xl bg-primary text-on-primary font-label-caps text-label-caps justify-center shadow-lg"
                         href="#booking">
                         <span class="material-symbols-outlined">calendar_month</span> Réserver
                     </a>
@@ -1057,18 +1077,35 @@
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenuClose = document.getElementById('mobile-menu-close');
         const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
         const mobileMenuLinks = mobileMenu ? mobileMenu.querySelectorAll('a[href^="#"], a[href="#"], a[href^="tel:"]') : [];
 
         const toggleMobileMenu = (show) => {
-            if (!mobileMenu) return;
-            mobileMenu.classList.toggle('hidden', !show);
+            if (!mobileMenu || !mobileMenuOverlay) return;
+
+            mobileMenu.classList.toggle('translate-x-0', show);
+            mobileMenu.classList.toggle('translate-x-full', !show);
+            mobileMenu.classList.toggle('opacity-100', show);
+            mobileMenu.classList.toggle('opacity-0', !show);
+            mobileMenu.classList.toggle('pointer-events-auto', show);
+            mobileMenu.classList.toggle('pointer-events-none', !show);
+
+            mobileMenuOverlay.classList.toggle('opacity-100', show);
+            mobileMenuOverlay.classList.toggle('opacity-0', !show);
+            mobileMenuOverlay.classList.toggle('pointer-events-auto', show);
+            mobileMenuOverlay.classList.toggle('pointer-events-none', !show);
+
             document.body.classList.toggle('overflow-hidden', show);
             mobileMenuButton?.setAttribute('aria-expanded', show ? 'true' : 'false');
         };
 
         mobileMenuButton?.addEventListener('click', () => toggleMobileMenu(true));
         mobileMenuClose?.addEventListener('click', () => toggleMobileMenu(false));
+        mobileMenuOverlay?.addEventListener('click', () => toggleMobileMenu(false));
         mobileMenuLinks.forEach(link => link.addEventListener('click', () => toggleMobileMenu(false)));
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') toggleMobileMenu(false);
+        });
 
         // Header scroll behavior
         window.addEventListener('scroll', () => {
