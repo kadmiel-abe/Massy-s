@@ -265,81 +265,80 @@
 <body
     class="bg-background text-on-background font-body-md selection:bg-primary-fixed selection:text-on-primary-fixed overflow-x-hidden">
     <!-- TopNavBar -->
-    <header
-        class="fixed top-0 w-full z-50 glass-header bg-surface/80 border-b border-outline-variant/20 transition-all duration-500 py-4 h-auto">
-        <div class="flex justify-between items-center px-8 md:px-gutter max-w-container-max mx-auto">
-            <!-- Brand Logo -->
-            <a class="flex items-center gap-3 group" href="#hero">
-                <img alt="Massy's Relaxation &amp; Spa Logo"
-                    class="h-10 w-10 object-contain transition-transform duration-500 group-hover:rotate-12"
-                    src="/assets/images/logod.jpg" />
-                <span class="font-headline-md text-2xl font-semibold text-primary tracking-tight">Massy's Spa</span>
+<header
+    class="fixed top-0 w-full z-50 bg-white md:glass-header md:bg-surface/80 border-b border-outline-variant/20 shadow-sm md:shadow-none transition-all duration-500 py-4 h-auto">
+    <div class="flex justify-between items-center px-8 md:px-gutter max-w-container-max mx-auto">
+        <!-- Brand Logo -->
+        <a class="flex items-center gap-3 group" href="#hero">
+            <img alt="Massy's Relaxation &amp; Spa Logo"
+                class="h-10 w-10 object-contain transition-transform duration-500 group-hover:rotate-12"
+                src="/assets/images/logod.jpg" />
+            <span class="font-headline-md text-2xl font-semibold text-primary tracking-tight">Massy's Spa</span>
+        </a>
+        <!-- Desktop Navigation -->
+        <nav class="hidden md:flex items-center gap-10">
+            <a class="font-label-caps text-label-caps text-primary relative nav-link after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all"
+                href="#hero">Accueil</a>
+            <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-all duration-300 relative nav-link after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all"
+                href="#services">Services</a>
+            <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-all duration-300 relative nav-link after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all"
+                href="#about">À propos</a>
+            <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-all duration-300 relative nav-link after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all"
+                href="#galerie">Galerie</a>
+            <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-all duration-300 relative nav-link after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all"
+                href="#contact">Contact</a>
+        </nav>
+        <!-- Actions -->
+        <div class="flex items-center gap-4">
+            <button id="mobile-menu-button" type="button"
+                class="md:hidden inline-flex items-center justify-center w-11 h-11 rounded-full border border-primary/30 text-primary hover:bg-primary/10 transition-all">
+                <span class="material-symbols-outlined text-2xl">menu</span>
+            </button>
+            <a class="hidden xl:flex items-center gap-2 font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors"
+                href="tel:+22500000000">
+                <span class="material-symbols-outlined text-sm">call</span>
+                +225 0507719668
             </a>
-            <!-- Desktop Navigation -->
-            <nav class="hidden md:flex items-center gap-10">
-                <a class="font-label-caps text-label-caps text-primary relative nav-link after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all"
+            <a class="hidden md:inline-flex bg-primary text-on-primary px-8 py-3.5 rounded-full font-label-caps text-label-caps transition-all hover:scale-105 hover:bg-surface-tint active:scale-95 shadow-md"
+                href="#booking">
+                Réserver
+            </a>
+        </div>
+    </div>
+    <div id="mobile-menu-overlay"
+        class="fixed inset-0 z-40 bg-black/40 hidden opacity-0 transition-opacity duration-300"></div>
+    <div id="mobile-menu"
+        class="fixed top-0 right-0 z-50 h-full w-[85vw] max-w-sm bg-white border-l border-outline-variant/20 shadow-2xl hidden translate-x-full opacity-0 pointer-events-none transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]">
+        <div class="px-6 pb-8 pt-8 h-full flex flex-col bg-white">
+            <button id="mobile-menu-close" type="button"
+                class="mb-6 inline-flex items-center justify-center rounded-full border border-primary/30 w-11 h-11 text-primary hover:bg-primary/10 transition-all">
+                <span class="material-symbols-outlined text-2xl">close</span>
+            </button>
+            <nav class="flex flex-col gap-6">
+                <a class="font-headline-md text-2xl text-primary hover:text-primary/70 transition-all nav-link"
                     href="#hero">Accueil</a>
-                <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-all duration-300 relative nav-link after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all"
+                <a class="font-headline-md text-2xl text-primary hover:text-primary/70 transition-all nav-link"
                     href="#services">Services</a>
-                <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-all duration-300 relative nav-link after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all"
+                <a class="font-headline-md text-2xl text-primary hover:text-primary/70 transition-all nav-link"
                     href="#about">À propos</a>
-                <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-all duration-300 relative nav-link after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all"
+                <a class="font-headline-md text-2xl text-primary hover:text-primary/70 transition-all nav-link"
                     href="#galerie">Galerie</a>
-                <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-all duration-300 relative nav-link after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all"
+                <a class="font-headline-md text-2xl text-primary hover:text-primary/70 transition-all nav-link"
                     href="#contact">Contact</a>
             </nav>
-            <!-- Actions -->
-            <div class="flex items-center gap-4">
-                <button id="mobile-menu-button" type="button"
-                    class="md:hidden inline-flex items-center justify-center w-11 h-11 rounded-full border border-outline-variant/30 text-on-surface-variant hover:bg-surface/80 transition-all">
-                    <span class="material-symbols-outlined text-2xl">menu</span>
-                </button>
-                <a class="hidden xl:flex items-center gap-2 font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors"
-                    href="tel:+22500000000">
-                    <span class="material-symbols-outlined text-sm">call</span>
-                    +225 0507719668
-
-                </a>
-                <a class="hidden md:inline-flex bg-primary text-on-primary px-8 py-3.5 rounded-full font-label-caps text-label-caps transition-all hover:scale-105 hover:bg-surface-tint active:scale-95 shadow-md"
+            <div class="mt-8 flex flex-col gap-4">
+                <a class="inline-flex items-center gap-2 px-4 py-4 rounded-2xl bg-primary text-on-primary font-label-caps text-label-caps justify-center hover:bg-white hover:text-primary border border-primary transition-all shadow-md"
                     href="#booking">
-                    Réserver
+                    <span class="material-symbols-outlined">calendar_month</span> Réserver
+                </a>
+                <a class="inline-flex items-center gap-2 px-4 py-4 rounded-2xl bg-primary text-on-primary justify-center hover:bg-white hover:text-primary border border-primary transition-all shadow-md"
+                    href="tel:+2250507719668">
+                    <span class="material-symbols-outlined">call</span> +225 05 07 71 96 68
                 </a>
             </div>
         </div>
-        <div id="mobile-menu-overlay"
-            class="fixed inset-0 z-40 bg-black/40 hidden opacity-0 transition-opacity duration-300"></div>
-        <div id="mobile-menu"
-            class="fixed top-0 right-0 z-50 h-full w-[85vw] max-w-sm bg-white backdrop-blur-xl border-l border-slate-200/70 shadow-2xl hidden translate-x-full opacity-0 pointer-events-none transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]">
-            <div class="px-6 pb-8 pt-8 h-full flex flex-col">
-                <button id="mobile-menu-close" type="button"
-                    class="mb-6 inline-flex items-center justify-center rounded-full border border-primary/30 w-11 h-11 text-primary hover:bg-primary/10 transition-all">
-                    <span class="material-symbols-outlined text-2xl">close</span>
-                </button>
-                <nav class="flex flex-col gap-4">
-                    <a class="font-label-caps text-label-caps text-primary hover:text-primary/80 transition-all nav-link"
-                        href="#hero">Accueil</a>
-                    <a class="font-label-caps text-label-caps text-primary hover:text-primary/80 transition-all nav-link"
-                        href="#services">Services</a>
-                    <a class="font-label-caps text-label-caps text-primary hover:text-primary/80 transition-all nav-link"
-                        href="#about">À propos</a>
-                    <a class="font-label-caps text-label-caps text-primary hover:text-primary/80 transition-all nav-link"
-                        href="#galerie">Galerie</a>
-                    <a class="font-label-caps text-label-caps text-primary hover:text-primary/80 transition-all nav-link"
-                        href="#contact">Contact</a>
-                </nav>
-                <div class="mt-8 flex flex-col gap-4">
-                    <a class="inline-flex items-center gap-2 px-4 py-4 rounded-2xl border border-primary/30 text-primary font-label-caps text-label-caps justify-center hover:bg-primary/10 transition-all"
-                        href="#booking">
-                        <span class="material-symbols-outlined">calendar_month</span> Réserver
-                    </a>
-                    <a class="inline-flex items-center gap-2 px-4 py-4 rounded-2xl border border-primary/30 text-primary justify-center hover:bg-primary/10 transition-all"
-                        href="tel:+2250507719668">
-                        <span class="material-symbols-outlined">call</span> +225 05 07 71 96 68
-                    </a>
-                </div>
-            </div>
-        </div>
-    </header>
+    </div>
+</header>
     <!-- Hero Section -->
     <section id="hero"
         class="relative min-h-[100svh] sm:min-h-[85vh] md:h-screen md:min-h-[700px] flex items-center justify-center overflow-hidden px-4 py-20 sm:px-6 sm:py-24 md:px-gutter md:py-24">
