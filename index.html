@@ -309,30 +309,30 @@
         <div id="mobile-menu-overlay"
             class="fixed inset-0 z-40 bg-black/40 hidden opacity-0 transition-opacity duration-300"></div>
         <div id="mobile-menu"
-            class="fixed top-0 right-0 z-50 h-full w-[85vw] max-w-sm bg-primary/95 backdrop-blur-xl border-l border-white/10 shadow-2xl hidden translate-x-full opacity-0 pointer-events-none transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]">
+            class="fixed top-0 right-0 z-50 h-full w-[85vw] max-w-sm bg-[#735c00] backdrop-blur-xl border-l border-white/10 shadow-2xl hidden translate-x-full opacity-0 pointer-events-none transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]">
             <div class="px-6 pb-8 pt-8 h-full flex flex-col">
                 <button id="mobile-menu-close" type="button"
-                    class="mb-6 inline-flex items-center justify-center rounded-full border border-outline-variant/30 w-11 h-11 text-on-surface-variant hover:bg-surface/80 transition-all">
+                    class="mb-6 inline-flex items-center justify-center rounded-full border border-white/20 w-11 h-11 text-white hover:bg-white/10 transition-all">
                     <span class="material-symbols-outlined text-2xl">close</span>
                 </button>
                 <nav class="flex flex-col gap-4">
-                    <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-all nav-link"
+                    <a class="font-label-caps text-label-caps text-white hover:text-[#f5e3a8] transition-all nav-link"
                         href="#hero">Accueil</a>
-                    <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-all nav-link"
+                    <a class="font-label-caps text-label-caps text-white hover:text-[#f5e3a8] transition-all nav-link"
                         href="#services">Services</a>
-                    <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-all nav-link"
+                    <a class="font-label-caps text-label-caps text-white hover:text-[#f5e3a8] transition-all nav-link"
                         href="#about">À propos</a>
-                    <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-all nav-link"
+                    <a class="font-label-caps text-label-caps text-white hover:text-[#f5e3a8] transition-all nav-link"
                         href="#galerie">Galerie</a>
-                    <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-all nav-link"
+                    <a class="font-label-caps text-label-caps text-white hover:text-[#f5e3a8] transition-all nav-link"
                         href="#contact">Contact</a>
                 </nav>
                 <div class="mt-8 flex flex-col gap-4">
-                    <a class="inline-flex items-center gap-2 px-4 py-4 rounded-2xl bg-primary text-on-primary font-label-caps text-label-caps justify-center"
+                    <a class="inline-flex items-center gap-2 px-4 py-4 rounded-2xl border border-white/30 text-white font-label-caps text-label-caps justify-center hover:bg-white/10 transition-all"
                         href="#booking">
                         <span class="material-symbols-outlined">calendar_month</span> Réserver
                     </a>
-                    <a class="inline-flex items-center gap-2 px-4 py-4 rounded-2xl border border-outline-variant/30 text-on-surface-variant justify-center hover:text-primary transition-all"
+                    <a class="inline-flex items-center gap-2 px-4 py-4 rounded-2xl border border-white/20 text-white justify-center hover:bg-white/10 transition-all"
                         href="tel:+2250507719668">
                         <span class="material-symbols-outlined">call</span> +225 05 07 71 96 68
                     </a>
@@ -822,72 +822,72 @@
         </div>
     </section>
     <!-- Booking & Contact -->
-    <section class="py-section-padding bg-surface-container-high relative overflow-hidden" id="contact">
-        <div class="max-w-container-max mx-auto px-gutter relative z-10">
-            <div class="bg-surface rounded-[40px] overflow-hidden luxury-shadow flex flex-col lg:flex-row reveal">
+    <section class="py-16 sm:py-section-padding bg-surface-container-high relative overflow-hidden" id="contact">
+        <div class="max-w-container-max mx-auto px-4 sm:px-6 md:px-gutter relative z-10">
+            <div class="bg-surface rounded-[24px] sm:rounded-[40px] overflow-hidden luxury-shadow flex flex-col lg:flex-row reveal">
                 <!-- Info Column -->
                 <div
-                    class="lg:w-1/3 bg-inverse-surface text-surface p-16 flex flex-col justify-between border-r border-white/5">
+                    class="w-full lg:w-1/3 bg-inverse-surface text-surface p-6 sm:p-10 lg:p-16 flex flex-col justify-between lg:border-r lg:border-white/5">
                     <div>
-                        <h2 class="font-headline-md text-4xl mb-12 text-primary-fixed">Contactez-nous</h2>
-                        <ul class="space-y-12">
-                            <li class="flex items-start gap-6 group">
+                        <h2 class="font-headline-md text-3xl sm:text-4xl mb-8 sm:mb-12 text-primary-fixed">Contactez-nous</h2>
+                        <ul class="space-y-8 sm:space-y-12">
+                            <li class="flex items-start gap-4 sm:gap-6 group">
                                 <span
                                     class="material-symbols-outlined text-primary-fixed mt-1 group-hover:scale-110 transition-transform">location_on</span>
                                 <div>
-                                    <p class="font-bold text-lg mb-2">Localisation</p>
-                                    <p class="opacity-60 leading-relaxed">Abidjan, Côte d'Ivoire<br /> Angré Y4 derrière
+                                    <p class="font-bold text-base sm:text-lg mb-2">Localisation</p>
+                                    <p class="opacity-70 leading-relaxed text-sm sm:text-base">Abidjan, Côte d'Ivoire<br /> Angré Y4 derrière
                                         china Mall
                                     </p>
                                 </div>
                             </li>
-                            <li class="flex items-start gap-6 group">
+                            <li class="flex items-start gap-4 sm:gap-6 group">
                                 <span
                                     class="material-symbols-outlined text-primary-fixed mt-1 group-hover:scale-110 transition-transform">call</span>
                                 <div>
-                                    <p class="font-bold text-lg mb-2">Téléphone</p>
-                                    <p class="opacity-60 leading-relaxed">+225 0507719668<br />Ouvert 7j/7</p>
+                                    <p class="font-bold text-base sm:text-lg mb-2">Téléphone</p>
+                                    <p class="opacity-70 leading-relaxed text-sm sm:text-base">+225 0507719668<br />Ouvert 7j/7</p>
                                 </div>
                             </li>
-                            <li class="flex items-start gap-6 group">
+                            <li class="flex items-start gap-4 sm:gap-6 group">
                                 <span
                                     class="material-symbols-outlined text-primary-fixed mt-1 group-hover:scale-110 transition-transform">mail</span>
                                 <div>
-                                    <p class="font-bold text-lg mb-2">E-mail</p>
-                                    <p class="opacity-60 leading-relaxed">louarebecca@gmail.com</p>
+                                    <p class="font-bold text-base sm:text-lg mb-2">E-mail</p>
+                                    <p class="opacity-70 leading-relaxed text-sm sm:text-base">louarebecca@gmail.com</p>
                                 </div>
                             </li>
                         </ul>
                     </div>
-                    <div class="mt-20 p-8 rounded-3xl bg-white/5 border border-white/10">
-                        <p class="font-label-caps text-xs text-primary-fixed mb-3 tracking-widest">HORAIRES D'OUVERTURE
+                    <div class="mt-10 sm:mt-20 p-5 sm:p-8 rounded-3xl bg-white/5 border border-white/10">
+                        <p class="font-label-caps text-[10px] sm:text-xs text-primary-fixed mb-3 tracking-widest">HORAIRES D'OUVERTURE
                         </p>
                         <p class="text-sm opacity-80">Lundi - Dimanche : 09h00 - 21h00</p>
                     </div>
                 </div>
                 <!-- Form Column -->
-                <div class="lg:w-2/3 p-16" id="booking">
-                    <h3 class="font-headline-md text-4xl mb-12">Demander une réservation</h3>
-                    <form action="#" id="booking-form" class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="w-full lg:w-2/3 p-6 sm:p-10 lg:p-16" id="booking">
+                    <h3 class="font-headline-md text-3xl sm:text-4xl mb-8 sm:mb-12">Demander une réservation</h3>
+                    <form action="#" id="booking-form" class="grid grid-cols-1 gap-5 sm:gap-8 md:grid-cols-2">
                         <div class="flex flex-col gap-3">
                             <label class="font-label-caps text-[10px] text-on-surface-variant tracking-widest">NOM
                                 COMPLET</label>
                             <input id="booking-name" name="nom"
-                                class="bg-surface-container-low border border-outline-variant/30 rounded-xl p-5 focus:ring-1 focus:ring-primary focus:border-primary transition-all outline-none"
+                                class="bg-surface-container-low border border-outline-variant/30 rounded-xl p-4 sm:p-5 focus:ring-1 focus:ring-primary focus:border-primary transition-all outline-none"
                                 placeholder="Ex: Jean Dupont" type="text" />
                         </div>
                         <div class="flex flex-col gap-3">
                             <label
                                 class="font-label-caps text-[10px] text-on-surface-variant tracking-widest">TÉLÉPHONE</label>
                             <input id="booking-phone" name="telephone"
-                                class="bg-surface-container-low border border-outline-variant/30 rounded-xl p-5 focus:ring-1 focus:ring-primary focus:border-primary transition-all outline-none"
+                                class="bg-surface-container-low border border-outline-variant/30 rounded-xl p-4 sm:p-5 focus:ring-1 focus:ring-primary focus:border-primary transition-all outline-none"
                                 placeholder="+225 ..." type="tel" />
                         </div>
                         <div class="flex flex-col gap-3">
                             <label class="font-label-caps text-[10px] text-on-surface-variant tracking-widest">SOIN
                                 SOUHAITÉ</label>
                             <select id="booking-service" name="soin"
-                                class="bg-surface-container-low border border-outline-variant/30 rounded-xl p-5 focus:ring-1 focus:ring-primary focus:border-primary transition-all outline-none appearance-none">
+                                class="bg-surface-container-low border border-outline-variant/30 rounded-xl p-4 sm:p-5 focus:ring-1 focus:ring-primary focus:border-primary transition-all outline-none appearance-none">
                                 <option>Duo Sensuel Premium</option>
                                 <option>Package Gold</option>
                                 <option>Massage à 4 mains</option>
@@ -906,19 +906,19 @@
                             <label class="font-label-caps text-[10px] text-on-surface-variant tracking-widest">DATE
                                 SOUHAITÉE</label>
                             <input id="booking-date" name="date"
-                                class="bg-surface-container-low border border-outline-variant/30 rounded-xl p-5 focus:ring-1 focus:ring-primary focus:border-primary transition-all outline-none"
+                                class="bg-surface-container-low border border-outline-variant/30 rounded-xl p-4 sm:p-5 focus:ring-1 focus:ring-primary focus:border-primary transition-all outline-none"
                                 type="date" />
                         </div>
-                        <div class="col-span-1 md:col-span-2 flex flex-col gap-3">
+                        <div class="md:col-span-2 flex flex-col gap-3">
                             <label class="font-label-caps text-[10px] text-on-surface-variant tracking-widest">MESSAGE /
                                 BESOINS SPÉCIFIQUES</label>
                             <textarea id="booking-message" name="message"
-                                class="bg-surface-container-low border border-outline-variant/30 rounded-xl p-5 focus:ring-1 focus:ring-primary focus:border-primary transition-all outline-none"
+                                class="bg-surface-container-low border border-outline-variant/30 rounded-xl p-4 sm:p-5 focus:ring-1 focus:ring-primary focus:border-primary transition-all outline-none"
                                 placeholder="Dites-nous en plus sur vos attentes..." rows="4"></textarea>
                         </div>
-                        <div class="col-span-1 md:col-span-2 mt-8">
+                        <div class="md:col-span-2 mt-4 sm:mt-8">
                             <button
-                                class="w-full bg-primary text-on-primary py-6 rounded-full font-label-caps text-label-caps font-bold transition-all hover:scale-[1.02] active:scale-95 shadow-xl reveal-btn"
+                                class="w-full bg-primary text-on-primary py-4 sm:py-6 rounded-full font-label-caps text-label-caps font-bold transition-all hover:scale-[1.02] active:scale-95 shadow-xl reveal-btn"
                                 type="submit">
                                 ENVOYER MA DEMANDE DE RÉSERVATION
                             </button>
