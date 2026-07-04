@@ -167,6 +167,31 @@
             transform: translateY(0) scale(1);
         }
 
+        .typing-text {
+            display: inline-block;
+            min-height: 1.2em;
+            white-space: pre-wrap;
+        }
+
+        .typing-cursor {
+            display: inline-block;
+            width: 0.6ch;
+            border-right: 2px solid rgba(255, 255, 255, 0.95);
+            margin-left: 0.15rem;
+            animation: blink-cursor 0.8s steps(1) infinite;
+            vertical-align: baseline;
+        }
+
+        @keyframes blink-cursor {
+            0%, 50% {
+                opacity: 1;
+            }
+
+            51%, 100% {
+                opacity: 0;
+            }
+        }
+
         .nav-link {
             position: relative;
             transition: color 0.3s ease;
@@ -332,6 +357,123 @@
             border-color: #d4af37;
         }
 
+        /* Premium horizontal carousels */
+        .services-carousel,
+        .gallery-carousel {
+            display: flex;
+            gap: 1.25rem;
+            overflow-x: auto;
+            overflow-y: hidden;
+            scroll-snap-type: x mandatory;
+            padding: 0.5rem 0 1.5rem;
+            scrollbar-width: none;
+        }
+
+        .services-carousel::-webkit-scrollbar,
+        .gallery-carousel::-webkit-scrollbar {
+            display: none;
+        }
+
+        .services-carousel > div,
+        .gallery-carousel > div {
+            flex: 0 0 min(86vw, 330px);
+            scroll-snap-align: start;
+        }
+
+        .services-carousel > .featured-card {
+            flex-basis: min(86vw, 560px);
+        }
+
+        .gallery-carousel > div {
+            flex-basis: min(86vw, 320px);
+        }
+
+        .gallery-card {
+            position: relative;
+            min-height: 420px;
+            overflow: hidden;
+            border-radius: 1.75rem;
+            box-shadow: 0 25px 60px -25px rgba(0, 0, 0, 0.25);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+        }
+
+        .gallery-card:hover {
+            transform: translateY(-8px) scale(1.01);
+            box-shadow: 0 30px 70px -24px rgba(115, 92, 0, 0.28);
+        }
+
+        .gallery-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.04) 0%, rgba(0, 0, 0, 0.38) 100%);
+            pointer-events: none;
+        }
+
+        .gallery-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+
+        .gallery-card:hover img {
+            transform: scale(1.08);
+        }
+
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            z-index: 20;
+            width: 3rem;
+            height: 3rem;
+            border: 0;
+            border-radius: 9999px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            background: rgba(115, 92, 0, 0.95);
+            box-shadow: 0 12px 35px -16px rgba(0, 0, 0, 0.45);
+            transform: translateY(-50%);
+            transition: transform 0.2s ease, opacity 0.2s ease, background 0.2s ease;
+        }
+
+        .carousel-nav:hover {
+            transform: translateY(-50%) scale(1.06);
+            background: #d4af37;
+        }
+
+        .carousel-nav:disabled {
+            opacity: 0.35;
+            cursor: not-allowed;
+            transform: translateY(-50%) scale(0.96);
+        }
+
+        .carousel-nav.left-0 {
+            left: -0.9rem;
+        }
+
+        .carousel-nav.right-0 {
+            right: -0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .carousel-nav {
+                width: 2.7rem;
+                height: 2.7rem;
+            }
+
+            .carousel-nav.left-0 {
+                left: 0.15rem;
+            }
+
+            .carousel-nav.right-0 {
+                right: 0.15rem;
+            }
+        }
+
         /* Custom scrollbar for premium feel */
         ::-webkit-scrollbar {
             width: 8px;
@@ -440,11 +582,12 @@
             <span class="font-label-caps text-[0.72rem] sm:text-label-caps tracking-[0.25em] sm:tracking-[0.4em] text-primary-fixed mb-4 sm:mb-6 md:mb-8 block reveal leading-relaxed">
                 L'ART DU BIEN-ÊTRE ABSOLU
             </span>
-            <h1 class="font-headline-xl text-[2rem] leading-[2.5rem] sm:text-[2.7rem] sm:leading-[3.2rem] md:text-headline-xl mb-5 sm:mb-8 md:mb-10 reveal"
-                style="transition-delay: 200ms;">
-                Une parenthèse de détente exclusive au cœur d'Abidjan
+            <h1 id="hero-title" class="font-headline-xl text-[2rem] leading-[2.5rem] sm:text-[2.7rem] sm:leading-[3.2rem] md:text-headline-xl mb-3 sm:mb-4 md:mb-5 reveal"
+                style="transition-delay: 200ms;"
+                data-typing-text="Une parenthèse de détente exclusive au cœur d'Abidjan">
+                <span class="typing-text" aria-live="polite"></span><span class="typing-cursor" aria-hidden="true"></span>
             </h1>
-            <p class="font-body-lg text-base sm:text-lg md:text-body-lg mb-8 sm:mb-10 md:mb-14 max-w-2xl mx-auto opacity-90 reveal"
+            <p class="font-body-lg text-base sm:text-lg md:text-body-lg mb-5 sm:mb-6 md:mb-8 max-w-2xl mx-auto opacity-90 reveal"
                 style="transition-delay: 400ms;">
                 Découvrez nos rituels ancestraux et soins premium conçus pour sublimer votre sérénité dans un cadre
                 d'exception.
@@ -478,10 +621,14 @@
                     traitements pour revitaliser votre corps et apaiser votre esprit.</p>
             </div>
             <!-- Expanded Grid for 12 Services -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="relative">
+                <button id="services-prev" class="carousel-nav left-0 hidden md:flex" type="button" aria-label="Défiler vers la gauche">
+                    <span class="material-symbols-outlined">chevron_left</span>
+                </button>
+                <div id="services-track" class="services-carousel">
                 <!-- Duo Sensuel (Featured Large Card) -->
                 <div
-                    class="lg:col-span-2 reveal card-hover premium-card relative rounded-2xl overflow-hidden bg-inverse-surface text-white flex flex-col md:flex-row border border-outline-variant/10">
+                    class="featured-card lg:col-span-2 reveal card-hover premium-card relative rounded-2xl overflow-hidden bg-inverse-surface text-white flex flex-col md:flex-row border border-outline-variant/10">
                     <div class="w-full md:w-1/2 h-80 md:h-full relative overflow-hidden">
                         <img alt="Duo Sensuel Premium"
                             class="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
@@ -699,6 +846,9 @@
                     </div>
                 </div>
             </div>
+            <button id="services-next" class="carousel-nav right-0 hidden md:flex" type="button" aria-label="Défiler vers la droite">
+                <span class="material-symbols-outlined">chevron_right</span>
+            </button>
         </div>
     </section>
     <!-- Why Choose Us -->
@@ -782,28 +932,35 @@
                 <h2 class="font-headline-lg text-3xl mb-6">Galerie Immersive</h2>
                 <p class="font-label-caps text-primary tracking-widest">DÉCOUVREZ NOTRE UNIVERS EN IMAGES</p>
             </div>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:h-[900px]">
-                <div class="col-span-2 row-span-2 rounded-3xl overflow-hidden luxury-shadow group reveal">
-                    <img alt="Spa Suite"
-                        class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
-                        src="/assets/images/529824810_122134394696886030_6526657566712897371_n.jpg" />
+            <div class="relative">
+                <button id="gallery-prev" class="carousel-nav left-0 hidden md:flex" type="button" aria-label="Défiler vers la gauche">
+                    <span class="material-symbols-outlined">chevron_left</span>
+                </button>
+                <div id="gallery-track" class="gallery-carousel">
+                    <div class="gallery-card group reveal">
+                        <img alt="Spa Suite"
+                            class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                            src="/assets/images/529824810_122134394696886030_6526657566712897371_n.jpg" />
+                    </div>
+                    <div class="gallery-card group reveal" style="transition-delay: 150ms;">
+                        <img alt="Stones &amp; Zen"
+                            class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                            src="/assets/images/581099577_122160617564886030_881963905481964647_n.jpg" />
+                    </div>
+                    <div class="gallery-card group reveal" style="transition-delay: 300ms;">
+                        <img alt="Aromatic Oils"
+                            class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                            src="/assets/images/583335810_122161924640886030_8135816736497997637_n.jpg" />
+                    </div>
+                    <div class="gallery-card group reveal" style="transition-delay: 450ms;">
+                        <img alt="Massage Room"
+                            class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                            src="/assets/images/589571570_122164482638886030_2331258946285810833_n.jpg" />
+                    </div>
                 </div>
-                <div class="rounded-3xl overflow-hidden luxury-shadow group reveal" style="transition-delay: 150ms;">
-                    <img alt="Stones &amp; Zen"
-                        class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
-                        src="/assets/images/581099577_122160617564886030_881963905481964647_n.jpg" />
-                </div>
-                <div class="rounded-3xl overflow-hidden luxury-shadow group reveal" style="transition-delay: 300ms;">
-                    <img alt="Aromatic Oils"
-                        class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
-                        src="/assets/images/583335810_122161924640886030_8135816736497997637_n.jpg" />
-                </div>
-                <div class="col-span-2 rounded-3xl overflow-hidden luxury-shadow group reveal"
-                    style="transition-delay: 450ms;">
-                    <img alt="Massage Room"
-                        class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
-                        src="/assets/images/589571570_122164482638886030_2331258946285810833_n.jpg" />
-                </div>
+                <button id="gallery-next" class="carousel-nav right-0 hidden md:flex" type="button" aria-label="Défiler vers la droite">
+                    <span class="material-symbols-outlined">chevron_right</span>
+                </button>
             </div>
         </div>
     </section>
@@ -1118,6 +1275,23 @@
         const sections = Array.from(document.querySelectorAll('section[id]')).filter(section => ['hero', 'services', 'about', 'galerie', 'contact'].includes(section.id));
         const pageHeader = document.querySelector('header');
 
+        const heroTitle = document.getElementById('hero-title');
+        if (heroTitle) {
+            const typingText = heroTitle.getAttribute('data-typing-text') || '';
+            const typingTarget = heroTitle.querySelector('.typing-text');
+            if (typingTarget && typingText) {
+                let index = 0;
+                const typeLetter = () => {
+                    if (index <= typingText.length) {
+                        typingTarget.textContent = typingText.slice(0, index);
+                        index += 1;
+                        setTimeout(typeLetter, index === typingText.length ? 120 : 42);
+                    }
+                };
+                setTimeout(typeLetter, 650);
+            }
+        }
+
         const updateActiveNav = () => {
             const headerHeight = pageHeader ? pageHeader.offsetHeight : 90;
             const position = window.scrollY + headerHeight + 20;
@@ -1211,6 +1385,42 @@
                 });
                 setTimeout(updateActiveNav, 500);
             });
+        });
+
+        const scrollCarousel = (track, direction) => {
+            if (!track) return;
+            const amount = Math.max(track.clientWidth * 0.9, 320);
+            track.scrollBy({ left: direction * amount, behavior: 'smooth' });
+        };
+
+        const updateCarouselButtons = (track, prev, next) => {
+            if (!track || !prev || !next) return;
+            const maxScroll = track.scrollWidth - track.clientWidth;
+            prev.disabled = track.scrollLeft <= 8;
+            next.disabled = track.scrollLeft >= maxScroll - 8;
+        };
+
+        const serviceTrack = document.getElementById('services-track');
+        const servicePrev = document.getElementById('services-prev');
+        const serviceNext = document.getElementById('services-next');
+        const galleryTrack = document.getElementById('gallery-track');
+        const galleryPrev = document.getElementById('gallery-prev');
+        const galleryNext = document.getElementById('gallery-next');
+
+        [
+            [serviceTrack, servicePrev, serviceNext],
+            [galleryTrack, galleryPrev, galleryNext]
+        ].forEach(([track, prev, next]) => {
+            if (!track) return;
+            prev?.addEventListener('click', () => scrollCarousel(track, -1));
+            next?.addEventListener('click', () => scrollCarousel(track, 1));
+            track.addEventListener('scroll', () => updateCarouselButtons(track, prev, next), { passive: true });
+            updateCarouselButtons(track, prev, next);
+        });
+
+        window.addEventListener('resize', () => {
+            updateCarouselButtons(serviceTrack, servicePrev, serviceNext);
+            updateCarouselButtons(galleryTrack, galleryPrev, galleryNext);
         });
     </script>
 </body>
